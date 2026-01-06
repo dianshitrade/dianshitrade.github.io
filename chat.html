@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在连接客服...</title>
+    <script>
+        // ================= 配置区域 =================
+        
+        // 1. 在这里填入你所有业务员的 WhatsApp 号码 (纯数字，不要加+)
+        // 格式：'国家代码+手机号',
+        var agents = [
+            '85244290785',  // 业务员 A (胜10商)
+            '85298280065',  // 业务员 B (小吴1个)
+            '85270317254'   // 业务员 C (LALA4商)
+        ];
+
+        // 2. 预设打招呼的话术 (方便你知道客户是从达人视频来的)
+        // 注意：空格用 %20 代替
+        var message = "Hello,%20I%20saw%20the%20video,%20I%20want%20to%20trade%20Gift%20Card.";
+
+        // ===========================================
+
+        function redirect() {
+            // 随机抽取一个号码
+            var randomAgent = agents[Math.floor(Math.random() * agents.length)];
+            
+            // 拼接 WhatsApp 链接
+            var url = "https://wa.me/" + randomAgent + "?text=" + message;
+            
+            // 执行跳转
+            window.location.href = url;
+        }
+
+        // 页面加载通过后立即执行
+        window.onload = redirect;
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding-top: 50px; font-family: sans-serif;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="80" alt="WhatsApp">
+        <h2>正在为您分配专属客服...</h2>
+        <p>Connecting to agent...</p>
+    </div>
+</body>
+</html>
