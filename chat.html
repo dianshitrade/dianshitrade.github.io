@@ -11,15 +11,15 @@
         var agents = [
             '85244290785',  // 业务员 1 (胜10商)
             '85298280065',  // 业务员 2 (小吴1个)
-            '85247556852',  // 业务员 3 (LALA5商) 👈 补了逗号
-            '85244619727',  // 业务员 4 (LALA5个) 👈 补了逗号
-            '85290505726',  // 业务员 5 (LALA5个) 👈 补了逗号
-            '85294325228',  // 业务员 6 (盛9个)   👈 补了逗号
-            '85247541626',  // 业务员 7 (盛10个)  👈 补了逗号
-            '85247531723',  // 业务员 8 (小吴18个) 👈 补了逗号
-            '85247037253'   // 业务员 9 (小吴18商)
-            '85263460783'   // 业务员 10 (诗11个)
-            '85298214196'   // 业务员 11 (诗12个)
+            '85247556852',  // 业务员 3 (LALA5商)
+            '85244619727',  // 业务员 4 (LALA5个)
+            '85290505726',  // 业务员 5 (LALA5个)
+            '85294325228',  // 业务员 6 (盛9个)
+            '85247541626',  // 业务员 7 (盛10个)
+            '85247531723',  // 业务员 8 (小吴18个)
+            '85247037253',  // 业务员 9 (小吴18商) 👈 已补逗号
+            '85263460783',  // 业务员 10 (诗11个) 👈 已补逗号
+            '85298214196',  // 业务员 11 (诗12个) 👈 已补逗号
             '85290536308'   // 业务员 12 (诗13个)
         ];
 
@@ -29,14 +29,22 @@
         // ===========================================
 
         function redirect() {
-            // 随机抽取一个号码
-            var randomAgent = agents[Math.floor(Math.random() * agents.length)];
-            
-            // 拼接 WhatsApp 链接
-            var url = "https://wa.me/" + randomAgent + "?text=" + message;
-            
-            // 执行跳转
-            window.location.href = url;
+            try {
+                // 随机抽取一个号码
+                var randomAgent = agents[Math.floor(Math.random() * agents.length)];
+                
+                // 拼接 WhatsApp 链接
+                var url = "https://wa.me/" + randomAgent + "?text=" + message;
+                
+                // 给手动按钮也赋值，防止自动跳转失败
+                document.getElementById('manual-link').href = url;
+                document.getElementById('manual-btn').style.display = 'inline-block';
+
+                // 执行跳转
+                window.location.href = url;
+            } catch (e) {
+                console.error("跳转失败:", e);
+            }
         }
 
         // 页面加载通过后立即执行
@@ -48,6 +56,13 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="80" alt="WhatsApp">
         <h2>正在为您分配专属客服...</h2>
         <p>Connecting to agent...</p>
+        
+        <br>
+        <a id="manual-link" href="#" style="text-decoration: none;">
+            <button id="manual-btn" style="display: none; padding: 15px 30px; font-size: 16px; background-color: #25D366; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                👉 点击这里直接联系 (Click to Chat)
+            </button>
+        </a>
     </div>
 </body>
 </html>
