@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Cosmic - Direct China Gift Card Loader</title>
+    <style>
+        /* ============ CSS 样式区域 (决定网站长什么样) ============ */
+        :root {
+            --primary: #FFD700; /* 流光金 */
+            --bg: #0a0a0a;      /* 深邃黑 */
+            --surface: #1a1a1a; /* 浅黑背景 */
+            --text: #ffffff;
+            --wa-green: #25D366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* 头部导航 */
+        header {
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary); letter-spacing: 1px; }
+        .logo span { color: #fff; }
+
+        /* 主视觉区域 (Hero Section) */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=1600&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1.2; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.2rem; color: #ccc; max-width: 600px; margin-bottom: 30px; }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary);
+            color: #000;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); }
+
+        .btn-wa { background-color: var(--wa-green); color: white; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+        .btn-wa:hover { box-shadow: 0 0 25px rgba(37, 211, 102, 0.6); }
+
+        /* 汇率展示卡片 */
+        .rates-section { padding: 60px 20px; text-align: center; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; color: var(--primary); }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .rate-card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .rate-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .rate-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .rate-tag { 
+            background: rgba(255, 215, 0, 0.1); 
+            color: var(--primary); 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .price { font-size: 2rem; font-weight: bold; margin: 15px 0; }
+
+        /* 信任条 */
+        .trust-bar {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #222;
+        }
+        .trust-badge { color: #3b82f6; display: inline-flex; align-items: center; gap: 5px; }
+
+        /* 悬浮按钮 */
+        .float-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--wa-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 999;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+
+    <script>
+        // ================= JS 智能分流系统 =================
+        
+        // 1. 你的所有客服号码池 (包含新加的3个)
+        var agents = [
+            '85270292764', '85294325228', '85247541626', '85263425279',
+            '85294234305', '85294325228', '85247541626', '85247531723',
+            '85247037253', '85263460783', '85298214196', '85290536308',
+            '85292840621', '85265099117', '85269079561',
+            // 新增
+            '85244646056', '85270200317', '85262706263'
+        ];
+
+        // 2. 客户点击按钮时发送的话术
+        var text = "Hi Card Cosmic! I want to trade gift cards. What is the rate today?";
+        var message = encodeURIComponent(text);
+
+        // 3. 随机跳转逻辑
+        function chatNow() {
+            try {
+                // 随机选一个
+                var randomAgent = agents[Math.floor(Math.random() * agents.length)];
+                // 生成链接
+                var url = "https://wa.me/" + randomAgent + "?text=" + message;
+                // 打开新窗口
+                window.open(url, '_blank');
+            } catch (e) {
+                console.error("Error:", e);
+                // 备用：万一出错跳转到主号（这里填你最稳的那个号）
+                window.location.href = "https://wa.me/85244646056"; 
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CARD <span>COSMIC</span></div>
+        <button onclick="chatNow()" class="btn-wa" style="padding: 8px 20px; font-size: 14px; border-radius: 5px;">
+            Chat Support
+        </button>
+    </header>
+
+    <section class="hero">
+        <h1>Sell Gift Cards to <br><span>Direct China Loader</span></h1>
+        <p>No Middlemen. No Delay. We pay instant Naira/USDT for Steam, Apple, Razer & More.</p>
+        
+        <button onclick="chatNow()" class="btn">
+            🔥 TRADE NOW - GET PAID
+        </button>
+        
+        <div style="margin-top: 20px; font-size: 0.9rem; color: #888;">
+            <span class="trust-badge">✓ Meta Verified Business</span> &nbsp;|&nbsp; 
+            <span>✓ 24/7 Online</span>
+        </div>
+    </section>
+
+    <section class="rates-section">
+        <h2 class="section-title">Today's High Rates 🚀</h2>
+        
+        <div class="cards-grid">
+            <div class="rate-card">
+                <h3>Steam Wallet</h3>
+                <span class="rate-tag">HOT DEMAND</span>
+                <div class="price">Up to 1400/$</div>
+                <p>Physical / E-code accepted</p>
+                <button onclick="chatNow()" class="btn-wa" style="width: 100%; margin-top: 15px; border-radius: 10px;">Sell Steam</button>
+            </div>
+
+            <div class="rate-card">
+                <h3>Razer Gold</h3>
+                <span class="rate-tag">FAST PAY</span>
+                <div class="price">Up to 1385/$</div>
+                <p>Global / USD / EUR</p>
+                <button onclick="chatNow()" class="btn-wa" style="width: 100%; margin-top: 15px; border-radius: 10px;">Sell Razer</button>
+            </div>
+
+            <div class="rate-card">
+                <h3>Apple / iTunes</h3>
+                <span class="rate-tag">INSTANT LOAD</span>
+                <div class="price">Up to 1350/$</div>
+                <p>Universal Codes</p>
+                <button onclick="chatNow()" class="btn-wa" style="width: 100%; margin-top: 15px; border-radius: 10px;">Sell Apple</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="trust-bar">
+        <p>© 2026 Card Cosmic | Guangxi Dianshi Intelligent Technology Co., Ltd.</p>
+        <p style="font-size: 0.8rem; margin-top: 5px; color: #444;">Verified Meta Business Partner. Safe & Secure Trading.</p>
+    </div>
+
+    <a href="javascript:void(0)" onclick="chatNow()" class="float-wa">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.52.67 4.89 1.84 6.96L2.6 28.6l5.86-1.54A13.94 13.94 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.4c-2.36 0-4.6-.7-6.52-1.92l-.47-.29-3.87 1.02 1.03-3.77-.3-.49A11.37 11.37 0 014.6 16C4.6 9.7 9.7 4.6 16 4.6s11.4 5.1 11.4 11.4-5.1 11.4-11.4 11.4z"/></svg>
+    </a>
+
+</body>
+</html>
