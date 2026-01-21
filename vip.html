@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ============ 1. 核心基础样式 ============ */
+        /* ============ 核心样式 ============ */
         :root {
-            --primary: #1e293b; /* 深蓝黑 (文字/按钮) */
-            --accent: #FFD700;  /* 品牌黄 */
-            --bg-dark: #0f172a; /* 汇率部分深背景 */
+            --primary: #1e293b; 
+            --accent: #FFD700;  
+            --bg-dark: #0f172a; 
             --text-gray: #64748b;
             --white: #ffffff;
-            --blue-btn: #2563eb; /* 按钮亮蓝 */
+            --blue-btn: #2563eb; 
+            --wa-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; /* 让滚动变丝滑 */ }
         body { font-family: 'Inter', sans-serif; color: var(--primary); background-color: #f8fafc; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -27,54 +29,44 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         /* 按钮样式 */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; border: none; }
         .btn-primary { background-color: var(--blue-btn); color: white; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
         .btn-outline { border: 1px solid #ddd; background: white; color: var(--primary); }
         .btn-black { background: black; color: white; display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
         .btn-black:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         
-        /* ============ 2. 导航栏 (Navbar) ============ */
+        .btn-wa-large { background-color: var(--wa-green); color: white; font-size: 1.2rem; padding: 15px 40px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
+        .btn-wa-large:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
+
+        /* 导航栏 */
         nav { background: white; padding: 20px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 5px; }
-        .logo span { color: #f59e0b; } /* 黄色点缀 */
+        .logo span { color: #f59e0b; }
         
-        .nav-links { display: flex; gap: 30px; font-weight: 500; color: var(--text-gray); display: none; /* 移动端默认隐藏 */ }
+        .nav-links { display: flex; gap: 30px; font-weight: 500; color: var(--text-gray); display: none; }
         @media(min-width: 768px) { .nav-links { display: flex; } }
-        
         .nav-actions { display: flex; gap: 15px; }
 
-        /* ============ 3. 英雄区域 (Hero) ============ */
+        /* Hero 区域 */
         .hero { padding: 60px 0; background: white; }
         .hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
         @media(min-width: 992px) { 
             .hero .container { flex-direction: row; text-align: left; justify-content: space-between; } 
             .hero-text { max-width: 50%; }
-            .app.png { max-width: 45%; }
+            .hero-img { max-width: 45%; }
         }
 
         .hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
         .hero p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; }
-        .app-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .app-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
         @media(min-width: 992px) { .app-buttons { justify-content: flex-start; } }
 
+        /* 你的图片样式 (app.png) */
         .hero-img img { width: 100%; max-width: 400px; drop-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 30px; }
 
-        /* ============ 4. 数据统计 (Stats) ============ */
-        .stats { background: white; padding: 40px 0; border-top: 1px solid #eee; }
-        .stats .container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
-        .stat-item h3 { font-size: 2rem; font-weight: 800; }
-        .stat-item p { color: var(--text-gray); }
-
-        /* ============ 5. 暗黑汇率表 (Rates) ============ */
+        /* 汇率表区域 */
         .rates-section { background-color: var(--bg-dark); color: white; padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 50px; }
         .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
@@ -92,28 +84,23 @@
         .rate-box span { display: block; font-size: 0.8rem; color: #94a3b8; }
         .rate-box strong { font-size: 1.1rem; color: #fff; }
 
-        /* ============ 6. 功能特点 (Features) ============ */
+        /* 功能区域 */
         .features { padding: 80px 0; background: white; }
         .features-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
         @media(min-width: 768px) { .features-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
-        
-        .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .f-item i { font-size: 24px; color: var(--blue-btn); margin-bottom: 15px; background: #eff6ff; padding: 15px; border-radius: 10px; }
-        .f-item h4 { font-size: 1.2rem; margin-bottom: 10px; }
-        .f-item p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
 
-        /* ============ 7. 底部 (Footer) ============ */
+        /* 底部 Footer */
         footer { background: white; padding: 60px 0 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-cta { margin-bottom: 50px; }
         .company-info { font-size: 0.9rem; color: #94a3b8; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
-        .company-info strong { color: #333; }
 
-        /* 悬浮客服按钮 */
+        /* 悬浮按钮 */
         .float-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 999; cursor: pointer; }
     </style>
 
     <script>
-        // ================= JS 智能分流系统 =================
+        // ================= 智能分流系统 =================
         var agents = [
             '85270292764', '85294325228', '85247541626', '85263425279',
             '85294234305', '85294325228', '85247541626', '85247531723',
@@ -122,20 +109,12 @@
             '85244646056', '85270200317', '85262706263'
         ];
 
-        // 统一的跳转逻辑
         function chatNow(customText) {
             try {
-                // 默认话术
-                var text = customText || "Hi Card Cosmic! I saw your website rates. I want to trade gift cards.";
+                var text = customText || "Hi Card Cosmic! I want to trade gift cards.";
                 var message = encodeURIComponent(text);
-                
-                // 随机选择客服
                 var randomAgent = agents[Math.floor(Math.random() * agents.length)];
-                
-                // 生成链接
                 var url = "https://wa.me/" + randomAgent + "?text=" + message;
-                
-                // 新窗口打开
                 window.open(url, '_blank');
             } catch (e) {
                 console.error("Error:", e);
@@ -159,7 +138,7 @@
                 <li><a href="#footer">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button onclick="chatNow('Hi, I need help logging in.')" class="btn btn-outline">Login</button>
+                <button onclick="chatNow('Hi, Login help needed')" class="btn btn-outline">Login</button>
                 <button onclick="chatNow()" class="btn btn-primary">Get Started</button>
             </div>
         </div>
@@ -176,27 +155,26 @@
                         <i class="fa-brands fa-apple" style="font-size: 20px;"></i> 
                         <div><span style="font-size: 10px; display:block;">Download on the</span>App Store</div>
                     </a>
-                    
                     <a href="https://play.google.com/store/apps/details?id=app.com.cardlaxy" target="_blank" class="btn-black">
                         <i class="fa-brands fa-google-play" style="font-size: 18px;"></i>
                         <div><span style="font-size: 10px; display:block;">GET IT ON</span>Google Play</div>
                     </a>
                 </div>
 
-                <div class="stats" style="border:none; padding: 30px 0 0 0; text-align: left; display: flex; gap: 40px;">
-                    <div>
-                        <h3 style="font-size: 1.5rem; font-weight:800;">1M+</h3>
-                        <span style="font-size: 0.9rem; color:#666;">User's Choice</span>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.5rem; font-weight:800;">₦1.2B+</h3>
-                        <span style="font-size: 0.9rem; color:#666;">Daily Volume</span>
-                    </div>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <a href="#rates" class="btn btn-primary" style="background-color: transparent; border: 2px solid var(--blue-btn); color: var(--blue-btn); width: 100%;">
+                        🔥 View Today's High Rates 👇
+                    </a>
+                </div>
+
+                <div class="stats" style="border:none; padding: 10px 0 0 0; text-align: left; display: flex; gap: 40px;">
+                    <div><h3 style="font-size: 1.5rem; font-weight:800;">1M+</h3><span style="color:#666;">User's Choice</span></div>
+                    <div><h3 style="font-size: 1.5rem; font-weight:800;">₦1.2B+</h3><span style="color:#666;">Daily Volume</span></div>
                 </div>
             </div>
             
             <div class="hero-img">
-                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=800&auto=format&fit=crop" alt="Card Cosmic App">
+                <img src="app.png" alt="Card Cosmic App Preview">
             </div>
         </div>
     </section>
@@ -205,9 +183,8 @@
         <div class="container">
             <div class="section-title">
                 <h2>Sell gift card with high rate 🔥</h2>
-                <p style="color: #94a3b8;">Live rates updated daily. Click to trade.</p>
+                <p style="color: #94a3b8;">Live rates updated daily. Click below to trade.</p>
             </div>
-
             <div class="rate-table">
                 <div class="rate-row" onclick="chatNow('I have Apple cards to sell')">
                     <div class="card-name"><i class="fa-brands fa-apple"></i> Apple / iTunes</div>
@@ -217,7 +194,6 @@
                         <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
                     </div>
                 </div>
-
                 <div class="rate-row" onclick="chatNow('I have Steam cards to sell')">
                     <div class="card-name"><i class="fa-brands fa-steam"></i> Steam Wallet</div>
                     <div class="rate-values">
@@ -226,7 +202,6 @@
                         <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
                     </div>
                 </div>
-
                 <div class="rate-row" onclick="chatNow('I have Razer cards to sell')">
                     <div class="card-name"><i class="fa-solid fa-gamepad"></i> Razer Gold</div>
                     <div class="rate-values">
@@ -235,21 +210,11 @@
                         <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
                     </div>
                 </div>
-
                 <div class="rate-row" onclick="chatNow('I have Xbox cards to sell')">
                     <div class="card-name"><i class="fa-brands fa-xbox" style="color:#107C10;"></i> Xbox</div>
                     <div class="rate-values">
                         <div class="rate-box"><span>US</span><strong>₦1082</strong></div>
                         <div class="rate-box"><span>EUR</span><strong>₦1117</strong></div>
-                        <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
-                    </div>
-                </div>
-
-                <div class="rate-row" onclick="chatNow('I have Amex cards to sell')">
-                    <div class="card-name"><i class="fa-brands fa-cc-amex" style="color:#006fcf;"></i> Amex</div>
-                    <div class="rate-values">
-                        <div class="rate-box"><span>US</span><strong>High</strong></div>
-                        <div class="rate-box"><span>Global</span><strong>High</strong></div>
                         <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
                     </div>
                 </div>
@@ -261,29 +226,9 @@
         <div class="container">
             <div class="features-grid">
                 <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 30px; line-height: 1.2;">Get possibilities for <br>better trading with <br>Card Cosmic</h2>
-                    <div class="feature-list">
-                        <div class="f-item">
-                            <i class="fa-solid fa-credit-card"></i>
-                            <h4>Top Rates</h4>
-                            <p>We offer market-leading gift card rates to maximize value.</p>
-                        </div>
-                        <div class="f-item">
-                            <i class="fa-solid fa-bolt"></i>
-                            <h4>Fast Pay Out</h4>
-                            <p>Your payments can be deposited in as little as 1 minute.</p>
-                        </div>
-                        <div class="f-item">
-                            <i class="fa-solid fa-chart-line"></i>
-                            <h4>High Rewards</h4>
-                            <p>Earn extra rewards with our referral system.</p>
-                        </div>
-                        <div class="f-item">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <h4>Secure & Safe</h4>
-                            <p>Our monitoring system safeguards security.</p>
-                        </div>
-                    </div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Get possibilities for <br>better trading</h2>
+                    <div class="f-item"><i class="fa-solid fa-credit-card"></i><h4>Top Rates</h4><p>Market-leading rates to maximize value.</p></div>
+                    <div class="f-item" style="margin-top:20px;"><i class="fa-solid fa-bolt"></i><h4>Fast Pay Out</h4><p>Payments in as little as 1 minute.</p></div>
                 </div>
                 <div style="text-align: center;">
                     <img src="https://cdn-icons-png.flaticon.com/512/3094/3094845.png" style="width: 80%; opacity: 0.8;" alt="Chart">
@@ -295,10 +240,12 @@
     <footer id="footer">
         <div class="container">
             <div class="footer-cta">
-                <h2>Ready to start trading?</h2>
-                <div class="app-buttons" style="justify-content: center; margin-top: 20px;">
-                    <a href="https://www.cardcosmic.com/app-download" target="_blank" class="btn-black">Download App</a>
-                </div>
+                <h2 style="margin-bottom: 20px;">Ready to start trading?</h2>
+                <p style="color: #666; margin-bottom: 30px;">Chat with us now to get the best deal.</p>
+                
+                <button onclick="chatNow('Hi, I am ready to trade!')" class="btn-wa-large">
+                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                </button>
             </div>
             
             <div class="company-info">
@@ -306,6 +253,9 @@
                 <p style="margin-top: 10px; font-size: 1rem;">
                     <strong>Guangxi Dianshi Intelligent Technology Co., Ltd.</strong><br>
                     Tel: <a href="tel:15994374811" style="color: var(--blue-btn);">+86 159 9437 4811</a>
+                </p>
+                <p style="margin-top: 15px;">
+                    <a href="https://www.cardcosmic.com/app-download" style="text-decoration: underline;">Download App</a>
                 </p>
             </div>
         </div>
