@@ -24,14 +24,23 @@
             '85269079561'   // 业务员 15
         ];
 
-        var message = "Hello,%20I%20saw%20the%20video,%20I%20want%20to%20trade%20Gift%20Card.";
+        // 🟢 修改重点：这里直接写你想说的话（英文），代码会自动转码
+        // 翻译：我有礼品卡，我想了解更多内容
+        var text = "I have gift cards, I want to know more details."; 
+        
+        // 这一行代码会自动把上面的空格和标点符号转换成 %20 这种格式
+        var message = encodeURIComponent(text);
 
         function redirect() {
             try {
                 var randomAgent = agents[Math.floor(Math.random() * agents.length)];
+                // 拼接链接
                 var url = "https://wa.me/" + randomAgent + "?text=" + message;
+                
+                // 执行跳转
                 window.location.href = url;
 
+                // 更新手动点击按钮的链接
                 document.getElementById('backup-link').href = url;
                 document.getElementById('loading-text').innerText = "如果未自动跳转，请点击下方按钮";
                 document.getElementById('manual-btn').style.display = 'inline-block';
