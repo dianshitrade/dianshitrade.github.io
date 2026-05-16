@@ -1,273 +1,290 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-NG">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Cosmic - Sell Gift Cards Instantly</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* ============ 核心样式 ============ */
-        :root {
-            --primary: #1e293b; 
-            --accent: #FFD700;  
-            --bg-dark: #0f172a; 
-            --text-gray: #64748b;
-            --white: #ffffff;
-            --blue-btn: #2563eb; 
-            --wa-green: #25D366;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card Cosmic | Nigeria Gift Card & Money News Hub</title>
+  <meta name="description" content="Card Cosmic is a Nigeria gift card, money news and creator media hub with daily rate signals, local updates, guides and WhatsApp trading support.">
+  <link rel="canonical" href="https://cardcosmic.top/">
+  <meta property="og:title" content="Card Cosmic | Sell Gift Cards in Nigeria for Naira">
+  <meta property="og:description" content="Check daily gift card rates, download the app, and trade supported cards for Naira.">
+  <meta property="og:image" content="https://cardcosmic.top/app.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cardcosmic.top/#organization",
+        "name": "Card Cosmic",
+        "url": "https://cardcosmic.top/",
+        "logo": "https://cardcosmic.top/%E7%B4%A0%E6%9D%90%E5%9B%BE%E7%89%87/LOGO%E7%9F%A2%E9%87%8F%E5%9B%BE.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+44 7542 487886",
+          "contactType": "customer support",
+          "areaServed": "NG",
+          "availableLanguage": ["English", "French", "Chinese", "Japanese"]
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; /* 让滚动变丝滑 */ }
-        body { font-family: 'Inter', sans-serif; color: var(--primary); background-color: #f8fafc; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* 通用容器 */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* 按钮样式 */
-        .btn { display: inline-block; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; border: none; }
-        .btn-primary { background-color: var(--blue-btn); color: white; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
-        .btn-outline { border: 1px solid #ddd; background: white; color: var(--primary); }
-        .btn-black { background: black; color: white; display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
-        .btn-black:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        
-        .btn-wa-large { background-color: var(--wa-green); color: white; font-size: 1.2rem; padding: 15px 40px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
-        .btn-wa-large:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
-
-        /* 导航栏 */
-        nav { background: white; padding: 20px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 5px; }
-        .logo span { color: #f59e0b; }
-        
-        .nav-links { display: flex; gap: 30px; font-weight: 500; color: var(--text-gray); display: none; }
-        @media(min-width: 768px) { .nav-links { display: flex; } }
-        .nav-actions { display: flex; gap: 15px; }
-
-        /* Hero 区域 */
-        .hero { padding: 60px 0; background: white; }
-        .hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
-        @media(min-width: 992px) { 
-            .hero .container { flex-direction: row; text-align: left; justify-content: space-between; } 
-            .hero-text { max-width: 50%; }
-            .hero-img { max-width: 45%; }
-        }
-
-        .hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
-        .hero p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; }
-        .app-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
-        @media(min-width: 992px) { .app-buttons { justify-content: flex-start; } }
-
-        /* 你的图片样式 (app.png) */
-        .hero-img img { width: 100%; max-width: 400px; drop-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 30px; }
-
-        /* 汇率表区域 */
-        .rates-section { background-color: var(--bg-dark); color: white; padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        
-        .rate-table { max-width: 900px; margin: 0 auto; background: #1e293b; border-radius: 20px; padding: 20px; }
-        .rate-row { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #334155; transition: 0.3s; }
-        .rate-row:last-child { border-bottom: none; }
-        .rate-row:hover { background: #334155; border-radius: 10px; cursor: pointer; }
-        
-        .card-name { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; font-weight: 600; }
-        .card-name i { font-size: 1.5rem; color: var(--accent); width: 30px; }
-        
-        .rate-values { display: flex; gap: 30px; text-align: right; }
-        .rate-box { min-width: 80px; }
-        .rate-box span { display: block; font-size: 0.8rem; color: #94a3b8; }
-        .rate-box strong { font-size: 1.1rem; color: #fff; }
-
-        /* 功能区域 */
-        .features { padding: 80px 0; background: white; }
-        .features-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
-        @media(min-width: 768px) { .features-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
-        .f-item i { font-size: 24px; color: var(--blue-btn); margin-bottom: 15px; background: #eff6ff; padding: 15px; border-radius: 10px; }
-
-        /* 底部 Footer */
-        footer { background: white; padding: 60px 0 20px; border-top: 1px solid #eee; text-align: center; }
-        .footer-cta { margin-bottom: 50px; }
-        .company-info { font-size: 0.9rem; color: #94a3b8; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
-
-        /* 悬浮按钮 */
-        .float-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 999; cursor: pointer; }
-    </style>
-
-    <script>
-        // ================= 智能分流系统 =================
-        var agents = [
-            '85270292764', '85294325228', '85247541626', '85263425279',
-            '85294234305', '85294325228', '85247541626', '85247531723',
-            '85247037253', '85263460783', '85298214196', '85290536308',
-            '85292840621', '85265099117', '85269079561',
-            '85244646056', '85270200317', '85262706263'
-        ];
-
-        function chatNow(customText) {
-            try {
-                var text = customText || "Hi Card Cosmic! I want to trade gift cards.";
-                var message = encodeURIComponent(text);
-                var randomAgent = agents[Math.floor(Math.random() * agents.length)];
-                var url = "https://wa.me/" + randomAgent + "?text=" + message;
-                window.open(url, '_blank');
-            } catch (e) {
-                console.error("Error:", e);
-                window.location.href = "https://wa.me/85244646056"; 
-            }
-        }
-    </script>
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cardcosmic.top/#website",
+        "url": "https://cardcosmic.top/",
+        "name": "Card Cosmic Nigeria Gift Card & Money News Hub",
+        "publisher": { "@id": "https://cardcosmic.top/#organization" },
+        "inLanguage": "en-NG",
+        "description": "Nigeria-focused gift card rates, local money news, creator videos, guides and WhatsApp trading support."
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://cardcosmic.top/#homepage",
+        "url": "https://cardcosmic.top/",
+        "name": "Card Cosmic Nigeria Gift Card & Money News Hub",
+        "isPartOf": { "@id": "https://cardcosmic.top/#website" },
+        "about": { "@id": "https://cardcosmic.top/#organization" },
+        "primaryImageOfPage": "https://cardcosmic.top/%E7%B4%A0%E6%9D%90%E5%9B%BE%E7%89%87/%E5%AE%A3%E4%BC%A0%E5%9B%BE%E7%89%87%E6%A8%AA%E5%B1%8F.png"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-
-    <nav>
-        <div class="container">
-            <div class="logo">
-                <i class="fa-solid fa-meteor" style="color: #facc15;"></i>
-                CARD COSMIC
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#rates">Rates</a></li>
-                <li><a href="#features">About</a></li>
-                <li><a href="#footer">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button onclick="chatNow('Hi, Login help needed')" class="btn btn-outline">Login</button>
-                <button onclick="chatNow()" class="btn btn-primary">Get Started</button>
-            </div>
-        </div>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html"><span class="brand-mark brand-logo-lockup"><img src="素材图片/LOGO矢量图.png" alt="Card Cosmic logo"></span><span class="brand-name">Card Cosmic</span></a>
+      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <div class="nav-links">
+        <a href="news.html">News</a>
+        <a href="gift-card-hub.html">Gift Card Hub</a>
+        <a href="guides.html">Guides</a>
+        <a href="videos.html">Videos</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a class="button secondary" data-whatsapp href="#">WhatsApp</a>
+        <select class="language-select" aria-label="Language"><option>English</option><option>British English</option><option>Français</option><option>中文</option><option>日本語</option></select><a class="button primary" href="app-download.html">Download App</a>
+      </div>
     </nav>
+  </header>
 
+  <main>
     <section class="hero">
-        <div class="container">
-            <div class="hero-text">
-                <h1>Unlock Value, Sell <br>GiftCards with <br>Trust 💯🤝</h1>
-                <p>Trade your gift cards for cash instantly with China's direct loader. No middlemen, just high rates.</p>
-                
-                <div class="app-buttons">
-                    <a href="https://apps.apple.com/us/app/cardcosmic/id6756063147" target="_blank" class="btn-black">
-                        <i class="fa-brands fa-apple" style="font-size: 20px;"></i> 
-                        <div><span style="font-size: 10px; display:block;">Download on the</span>App Store</div>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=app.com.cardlaxy" target="_blank" class="btn-black">
-                        <i class="fa-brands fa-google-play" style="font-size: 18px;"></i>
-                        <div><span style="font-size: 10px; display:block;">GET IT ON</span>Google Play</div>
-                    </a>
-                </div>
-
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <a href="#rates" class="btn btn-primary" style="background-color: transparent; border: 2px solid var(--blue-btn); color: var(--blue-btn); width: 100%;">
-                        🔥 View Today's High Rates 👇
-                    </a>
-                </div>
-
-                <div class="stats" style="border:none; padding: 10px 0 0 0; text-align: left; display: flex; gap: 40px;">
-                    <div><h3 style="font-size: 1.5rem; font-weight:800;">1M+</h3><span style="color:#666;">User's Choice</span></div>
-                    <div><h3 style="font-size: 1.5rem; font-weight:800;">₦1.2B+</h3><span style="color:#666;">Daily Volume</span></div>
-                </div>
-            </div>
-            
-            <div class="hero-img">
-                <img src="app.png" alt="Card Cosmic App Preview">
-            </div>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow hero-eyebrow">Official media hub · Nigeria</p>
+          <h1 class="hero-title"><span>Nigeria gift card</span><span>& money news</span><em>that converts.</em></h1>
+          <p class="lead">Card Cosmic brings gift card rate signals, local money updates, creator videos and practical guides into one trusted destination before users move to WhatsApp.</p>
+          <div class="hero-actions">
+            <a class="button store-button" data-app-store href="#"><img class="button-icon" src="https://cdn.simpleicons.org/apple/ffffff" alt="" aria-hidden="true"><span>Download on the</span><strong>App Store</strong></a>
+            <a class="button store-button" data-google-play href="#"><img class="button-icon" src="https://cdn.simpleicons.org/googleplay/ffffff" alt="" aria-hidden="true"><span>Get it on</span><strong>Google Play</strong></a>
+            <a class="button primary" data-whatsapp href="#"><img class="button-icon dark" src="https://cdn.simpleicons.org/whatsapp/0b7f55" alt="" aria-hidden="true">Join WhatsApp</a>
+            <a class="button secondary" href="gift-card-hub.html">Sell Gift Card Now</a>
+          </div>
+          <div class="stat-row">
+            <div class="stat"><strong>Daily desk</strong><span>Local Nigeria news, USD/Naira notes and gift card rate signals prepared for quick publishing.</span></div>
+            <div class="stat"><strong>30+ guides</strong><span>Search-focused explainers for Apple cards, Steam, Razer Gold, Cash App, Venmo, Zelle and safe trading.</span></div>
+            <div class="stat"><strong>Ad funnels</strong><span>Dedicated TikTok, Instagram, Facebook and creator pages with tracking codes and WhatsApp messages.</span></div>
+          </div>
         </div>
+        <div class="phone-stage hero-media-card" aria-label="Card Cosmic promotional video preview">
+          <div class="media-badge">Featured promo video · Nigeria campaign</div>
+          <video data-hero-video controls muted playsinline loop aria-label="Card Cosmic promotional video"></video>
+        </div>
+      </div>
     </section>
 
-    <section class="rates-section" id="rates">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sell gift card with high rate 🔥</h2>
-                <p style="color: #94a3b8;">Live rates updated daily. Click below to trade.</p>
-            </div>
-            <div class="rate-table">
-                <div class="rate-row" onclick="chatNow('I have Apple cards to sell')">
-                    <div class="card-name"><i class="fa-brands fa-apple"></i> Apple / iTunes</div>
-                    <div class="rate-values">
-                        <div class="rate-box"><span>US</span><strong>₦1189</strong></div>
-                        <div class="rate-box"><span>UK</span><strong>₦1424</strong></div>
-                        <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
-                    </div>
-                </div>
-                <div class="rate-row" onclick="chatNow('I have Steam cards to sell')">
-                    <div class="card-name"><i class="fa-brands fa-steam"></i> Steam Wallet</div>
-                    <div class="rate-values">
-                        <div class="rate-box"><span>US</span><strong>₦1072</strong></div>
-                        <div class="rate-box"><span>UK</span><strong>₦1431</strong></div>
-                        <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
-                    </div>
-                </div>
-                <div class="rate-row" onclick="chatNow('I have Razer cards to sell')">
-                    <div class="card-name"><i class="fa-solid fa-gamepad"></i> Razer Gold</div>
-                    <div class="rate-values">
-                        <div class="rate-box"><span>US</span><strong>₦1197</strong></div>
-                        <div class="rate-box"><span>CAD</span><strong>₦857</strong></div>
-                        <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
-                    </div>
-                </div>
-                <div class="rate-row" onclick="chatNow('I have Xbox cards to sell')">
-                    <div class="card-name"><i class="fa-brands fa-xbox" style="color:#107C10;"></i> Xbox</div>
-                    <div class="rate-values">
-                        <div class="rate-box"><span>US</span><strong>₦1082</strong></div>
-                        <div class="rate-box"><span>EUR</span><strong>₦1117</strong></div>
-                        <div class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Sell</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="brand-logo-strip" aria-label="Supported gift card brands">
+      <div class="container">
+        <div class="logo-marquee" data-brand-logos></div>
+      </div>
     </section>
 
-    <section class="features" id="features">
-        <div class="container">
-            <div class="features-grid">
-                <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Get possibilities for <br>better trading</h2>
-                    <div class="f-item"><i class="fa-solid fa-credit-card"></i><h4>Top Rates</h4><p>Market-leading rates to maximize value.</p></div>
-                    <div class="f-item" style="margin-top:20px;"><i class="fa-solid fa-bolt"></i><h4>Fast Pay Out</h4><p>Payments in as little as 1 minute.</p></div>
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3094/3094845.png" style="width: 80%; opacity: 0.8;" alt="Chart">
-                </div>
-            </div>
+    <section class="section media-dashboard">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Today’s focus</p>
+            <h2>Daily signals for Nigerian gift card traders.</h2>
+            <p>Track rate movement, USD/Naira context and local money stories in one editorial view, then guide readers toward the app or WhatsApp for live support.</p>
+          </div>
+          <a class="button secondary" href="news.html">Open News Desk</a>
         </div>
+        <div class="grid three" data-media-highlights></div>
+      </div>
     </section>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-cta">
-                <h2 style="margin-bottom: 20px;">Ready to start trading?</h2>
-                <p style="color: #666; margin-bottom: 30px;">Chat with us now to get the best deal.</p>
-                
-                <button onclick="chatNow('Hi, I am ready to trade!')" class="btn-wa-large">
-                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-                </button>
-            </div>
-            
-            <div class="company-info">
-                <p>Copyright © 2026 Card Cosmic. All Rights Reserved.</p>
-                <p style="margin-top: 10px; font-size: 1rem;">
-                    <strong>Guangxi Dianshi Intelligent Technology Co., Ltd.</strong><br>
-                    Tel: <a href="tel:15994374811" style="color: var(--blue-btn);">+86 159 9437 4811</a>
-                </p>
-                <p style="margin-top: 15px;">
-                    <a href="https://www.cardcosmic.com/app-download" style="text-decoration: underline;">Download App</a>
-                </p>
-            </div>
+    <section class="section soft">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Gift Card Hub</p>
+          <h2>Search-ready brand hubs with live quote paths.</h2>
+          <p class="lead">Build dedicated pages for Apple/iTunes, Steam, Razer Gold, Amazon, Google Play and Visa with reference rates, country notes, trading guidance, FAQs and a clear WhatsApp quote button.</p>
+          <div class="cta-row">
+            <a class="button primary" href="gift-card-hub.html">Open Gift Card Hub</a>
+            <a class="button secondary" data-whatsapp href="#">WhatsApp quote</a>
+          </div>
         </div>
-    </footer>
+        <div class="visual-collage">
+          <img src="素材图片/页面介绍.png" alt="Card Cosmic page introduction">
+          <img src="素材图片/礼品卡图片合集.png" alt="Gift card image collection">
+        </div>
+      </div>
+    </section>
 
-    <div class="float-btn" onclick="chatNow()">
-        <i class="fa-brands fa-whatsapp"></i>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Reference rate board</p>
+            <h2>Turn rate examples into daily searchable content.</h2>
+            <p>Use each brand and country row as a starting point for rate updates, campaign pages and pre-filled WhatsApp messages for live confirmation.</p>
+          </div>
+        </div>
+        <div class="rate-table-shell">
+          <div class="rate-table-head"><span>Brand</span><span>Region</span><span>Small value</span><span>Medium value</span><span>Large value</span></div>
+          <div data-rate-table></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">News / Local Updates</p>
+            <h2>Nigeria news sources ranked for editorial use.</h2>
+            <p>Monitor trusted local, finance and community sources, then publish original summaries with source links, short analysis and Card Cosmic conversion prompts.</p>
+          </div>
+          <a class="button secondary" href="news.html">View all sources</a>
+        </div>
+        <div class="grid four" data-news-feed data-limit="4"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Guides / Learn</p>
+          <h2>Practical guides before a user starts trading.</h2>
+          <p class="lead">Explain gift card basics, Nigeria use cases, platform safety checks, high-rate signals and how users should ask about Cash App, Venmo or Zelle support.</p>
+          <div class="cta-row">
+            <a class="button primary" href="guides.html">Open Guides</a>
+            <a class="button secondary" data-whatsapp href="#">Chat on WhatsApp</a>
+          </div>
+        </div>
+        <div class="grid steps">
+          <article class="card step"><h3>Choose card type</h3><p>Select Apple, Steam, Razer Gold, Xbox or another supported card category.</p></article>
+          <article class="card step"><h3>Check country and rate</h3><p>Card country and balance affect the rate. Confirm the latest guidance before starting.</p></article>
+          <article class="card step"><h3>Trade in the app</h3><p>Use Card Cosmic for the app-first trading experience, with WhatsApp available for support.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Opportunity radar</p>
+            <h2>Side-hustle topics with traffic and trust potential.</h2>
+            <p>Compare VTU, freelancing, mobile money rewards, crypto/P2P, betting information and gift card liquidity as future content pillars for Nigerian youth audiences.</p>
+          </div>
+        </div>
+        <div class="grid three" data-opportunities></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Trust signals</p>
+            <h2>Trader stories that support safer conversion.</h2>
+            <p>Use review-style stories to show rate confidence, support follow-up, payout clarity and after-sales care, then replace samples with verified customer proof before public launch.</p>
+          </div>
+        </div>
+        <div class="grid three" data-testimonials></div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SEO content cluster</p>
+            <h2>Thirty starter briefs for daily publishing rhythm.</h2>
+            <p>Cover gift card definitions, rates, FX explainers, platform comparisons, safety advice and Nigeria money opportunities so the site grows beyond a single landing page.</p>
+          </div>
+          <a class="button secondary" href="blog.html">Open blog</a>
+        </div>
+        <div class="grid three" data-posts-grid data-limit="6"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Funnel pages</p>
+            <h2>Campaign pages for TikTok, Instagram and Facebook traffic.</h2>
+            <p>Each landing page includes a source code, creator context, today’s trading angle and a pre-written WhatsApp message to measure traffic quality.</p>
+          </div>
+        </div>
+        <div class="grid three" data-funnel-pages></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Creator videos</p>
+            <h2>Creator videos that turn paid traffic into chats.</h2>
+            <p>Feature influencer explainers, campus clips, payout proof, rate walkthroughs and app demos in a scrollable gallery built for campaign landing pages.</p>
+          </div>
+          <a class="button secondary" href="videos.html">Open video page</a>
+        </div>
+        <div class="video-rail" data-video-rail></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Questions</p>
+          <h2>Answers for first-time traders.</h2>
+        </div>
+        <div class="faq-list" data-faq-list></div>
+      </div>
+    </section>
+
+    <section class="section contact-band">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Start with the app</p>
+          <h2>Ready to check your gift card rate?</h2>
+          <p class="lead">Download Card Cosmic or message support for current rate guidance.</p>
+        </div>
+        <div class="cta-row">
+          <a class="button primary" href="app-download.html">Download App</a>
+          <a class="button secondary" data-whatsapp href="#">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><h3>Card Cosmic</h3><p>Sell supported gift cards in Nigeria with clear rate guidance and an app-first trading flow.</p><p><strong>Operated by:</strong><br>Guangxi Dianshi Intelligent Technology Co., Ltd.</p></div>
+      <div><strong>Trade</strong><a href="rates.html">Rates</a><a href="sell-gift-cards-nigeria.html">Sell Gift Cards</a><a href="app-download.html">Download App</a></div>
+      <div><strong>Learn</strong><a href="how-it-works.html">How it works</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="faq.html">FAQ</a></div>
+      <div><strong>Company</strong><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
     </div>
-<footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #666; border-top: 1px solid #eee; margin-top: 40px;">
-    <p>Copyright © 2026 Card Cosmic. All Rights Reserved.</p>
-    <p><strong>Operated by: Guangxi Dianshi Intelligent Technology Co., Ltd.</strong></p>
-    <p><strong>主体公司：广西点石智能科技有限公司</strong></p>
-</footer>
+    <div class="container footer-bottom"><span>Copyright © 2026 Card Cosmic. All Rights Reserved.</span><a data-phone href="#">WhatsApp: +44 7542 487886</a></div>
+  </footer>
+  <script src="assets/data.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

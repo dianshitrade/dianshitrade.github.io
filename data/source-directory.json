@@ -1,0 +1,39 @@
+{
+  "news": [
+    { "name": "Vanguard", "url": "https://www.vanguardngr.com", "category": "Local news", "score": 91 },
+    { "name": "Punch", "url": "https://punchng.com", "category": "Local news", "score": 93 },
+    { "name": "The Cable", "url": "https://www.thecable.ng", "category": "Independent news", "score": 88 },
+    { "name": "Channels TV", "url": "https://www.channelstv.com", "category": "Broadcast news", "score": 90 },
+    { "name": "ThisDay", "url": "https://www.thisdaylive.com", "category": "Business/politics", "score": 87 },
+    { "name": "Legit.ng", "url": "https://www.legit.ng", "category": "General interest", "score": 82 },
+    { "name": "Linda Ikeji Blog", "url": "https://www.lindaikejisblog.com", "category": "Pop culture", "score": 76 },
+    { "name": "Nairaland", "url": "https://www.nairaland.com", "category": "Forum/sentiment", "score": 84 }
+  ],
+  "business": [
+    { "name": "BusinessDay", "url": "https://businessday.ng", "category": "Business", "score": 92 },
+    { "name": "Nairametrics", "url": "https://nairametrics.com", "category": "Finance/data", "score": 96 },
+    { "name": "Proshare", "url": "https://www.proshare.co", "category": "Investor portal", "score": 86 },
+    { "name": "TechCabal", "url": "https://techcabal.com", "category": "Tech/fintech", "score": 89 }
+  ],
+  "opportunities": [
+    { "name": "VTU/data resale", "url": "https://vtu.ng", "category": "Side hustle", "score": 88 },
+    { "name": "Upwork", "url": "https://www.upwork.com", "category": "Freelance", "score": 86 },
+    { "name": "Fiverr", "url": "https://www.fiverr.com", "category": "Freelance", "score": 84 },
+    { "name": "Opay", "url": "https://www.opayweb.com", "category": "Mobile money", "score": 82 },
+    { "name": "PalmPay", "url": "https://www.palmpay.com", "category": "Mobile money", "score": 82 }
+  ],
+  "giftCards": [
+    { "name": "Cardtonic", "url": "https://cardtonic.com", "category": "Gift card trading", "score": 91 },
+    { "name": "Prestmit", "url": "https://prestmit.io", "category": "Gift card/crypto", "score": 87 },
+    { "name": "GCBuying", "url": "https://gcbuying.com", "category": "Gift card trading", "score": 85 },
+    { "name": "GiftCardsToNaira", "url": "https://giftcardstonaira.com", "category": "Gift card trading", "score": 81 },
+    { "name": "Nosh", "url": "https://usenosh.com", "category": "Gift card trading", "score": 82 }
+  ],
+  "crypto": [
+    { "name": "Binance", "url": "https://www.binance.com", "category": "Crypto/P2P", "score": 89 },
+    { "name": "Bybit", "url": "https://www.bybit.com", "category": "Crypto/P2P", "score": 84 },
+    { "name": "Yellow Card", "url": "https://yellowcard.io", "category": "Africa exchange", "score": 86 },
+    { "name": "Quidax", "url": "https://quidax.io", "category": "Nigeria exchange", "score": 82 },
+    { "name": "Luno", "url": "https://www.luno.com", "category": "Africa exchange", "score": 81 }
+  ]
+}

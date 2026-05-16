@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "check": "node scripts/check-site.mjs",
+    "generate:news": "node scripts/generate-news.mjs"
+  },
+  "devDependencies": {}
+}

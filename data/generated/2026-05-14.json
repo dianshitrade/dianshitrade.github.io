@@ -1,0 +1,120 @@
+{
+  "date": "2026-05-14",
+  "status": "draft",
+  "editorialPolicy": "Use source links as signals, write original summaries, avoid copying full article text, and add Card Cosmic CTA blocks.",
+  "topics": [
+    {
+      "title": "Daily Nigeria money news brief",
+      "tags": [
+        "Nigeria",
+        "money",
+        "local news"
+      ],
+      "angle": "Summarise local stories that could affect youth spending, mobile money and online earning interest."
+    },
+    {
+      "title": "USD/NGN and gift card rate watch",
+      "tags": [
+        "FX",
+        "gift cards",
+        "Naira"
+      ],
+      "angle": "Explain how dollar movement can affect card demand and user expectations."
+    },
+    {
+      "title": "Online earning and side-hustle radar",
+      "tags": [
+        "VTU",
+        "freelancing",
+        "mobile money"
+      ],
+      "angle": "Track practical earning channels while warning users about unrealistic claims."
+    }
+  ],
+  "rankedSources": [
+    {
+      "group": "business",
+      "name": "Nairametrics",
+      "url": "https://nairametrics.com",
+      "category": "Finance/data",
+      "score": 96
+    },
+    {
+      "group": "news",
+      "name": "Punch",
+      "url": "https://punchng.com",
+      "category": "Local news",
+      "score": 93
+    },
+    {
+      "group": "business",
+      "name": "BusinessDay",
+      "url": "https://businessday.ng",
+      "category": "Business",
+      "score": 92
+    },
+    {
+      "group": "news",
+      "name": "Vanguard",
+      "url": "https://www.vanguardngr.com",
+      "category": "Local news",
+      "score": 91
+    },
+    {
+      "group": "giftCards",
+      "name": "Cardtonic",
+      "url": "https://cardtonic.com",
+      "category": "Gift card trading",
+      "score": 91
+    },
+    {
+      "group": "news",
+      "name": "Channels TV",
+      "url": "https://www.channelstv.com",
+      "category": "Broadcast news",
+      "score": 90
+    },
+    {
+      "group": "business",
+      "name": "TechCabal",
+      "url": "https://techcabal.com",
+      "category": "Tech/fintech",
+      "score": 89
+    },
+    {
+      "group": "crypto",
+      "name": "Binance",
+      "url": "https://www.binance.com",
+      "category": "Crypto/P2P",
+      "score": 89
+    },
+    {
+      "group": "news",
+      "name": "The Cable",
+      "url": "https://www.thecable.ng",
+      "category": "Independent news",
+      "score": 88
+    },
+    {
+      "group": "opportunities",
+      "name": "VTU/data resale",
+      "url": "https://vtu.ng",
+      "category": "Side hustle",
+      "score": 88
+    },
+    {
+      "group": "news",
+      "name": "ThisDay",
+      "url": "https://www.thisdaylive.com",
+      "category": "Business/politics",
+      "score": 87
+    },
+    {
+      "group": "giftCards",
+      "name": "Prestmit",
+      "url": "https://prestmit.io",
+      "category": "Gift card/crypto",
+      "score": 87
+    }
+  ]
+}
