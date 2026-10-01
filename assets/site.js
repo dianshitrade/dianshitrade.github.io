@@ -1,4 +1,41 @@
 (function () {
+  if (window.cardCosmicPixelInstalled) return;
+  window.cardCosmicPixelInstalled = true;
+  const pixelId = "1640453284465039";
+  if (!window.fbq) {
+    const fbq = window.fbq = function () {
+      if (fbq.callMethod) fbq.callMethod.apply(fbq, arguments);
+      else fbq.queue.push(arguments);
+    };
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq;
+    fbq.loaded = true;
+    fbq.version = "2.0";
+    fbq.queue = [];
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://connect.facebook.net/en_US/fbevents.js";
+    document.head.appendChild(script);
+  }
+  window.fbq("set", "autoConfig", false, pixelId);
+  window.fbq("init", pixelId);
+  window.fbq("trackSingle", pixelId, "PageView");
+  document.addEventListener("click", function (event) {
+    const link = event.target.closest && event.target.closest("a");
+    if (!link) return;
+    const url = new URL(link.href, window.location.href);
+    let platform;
+    if (url.hostname === "apps.apple.com") platform = "app_store";
+    if (url.hostname === "play.google.com") platform = "google_play";
+    if (platform) {
+      window.fbq("trackSingleCustom", pixelId, "AppDownloadClick", { platform });
+    } else if (link.hasAttribute("data-registration-link")) {
+      window.fbq("trackSingleCustom", pixelId, "RegistrationLinkClick");
+    }
+  }, true);
+})();
+
+(function () {
   const data = window.CARD_COSMIC;
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector("[data-menu-toggle]");
