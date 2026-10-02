@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CardCosmic | Mobile Preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf0f3; color: #22242b; font: 14px/1.5 system-ui, sans-serif; letter-spacing: 0; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 12px 24px; background: #fff; border-bottom: 1px solid #d8dce2; }
+    h1 { font-size: 16px; margin: 0; }
+    .tools { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    select, button { font: inherit; padding: 8px 10px; min-height: 40px; color: inherit; background: #fff; border: 1px solid #c8cdd5; border-radius: 5px; }
+    button, select { cursor: pointer; }
+    button:hover { background: #f5f6f8; }
+    a { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; min-height: 40px; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 3px solid #167c50; outline-offset: 3px; }
+    .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    main { display: grid; place-items: center; padding: 16px; min-height: calc(100dvh - 65px); }
+    .stage { position: relative; }
+    .phone { border: 8px solid #22242b; border-radius: 28px; overflow: hidden; background: #fff; transform-origin: top left; box-shadow: 0 12px 32px #22242b20; }
+    iframe { display: block; border: 0; background: #fff; }
+    @media (max-width: 520px) { header { padding: 10px 16px; gap: 8px; } .tools { gap: 8px; } main { padding: 12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CardCosmic · Mobile</h1>
+    <div class="tools">
+      <label for="screen">Screen</label>
+      <select id="screen" aria-label="Phone screen dimensions">
+        <option value="390,844" selected>390 x 844</option>
+        <option value="320,640">320 x 640</option>
+        <option value="430,932">430 x 932</option>
+      </select>
+      <button type="button" id="refresh">Refresh</button>
+      <a href="../index.html" target="_blank" rel="noopener">Open page <svg class="icon" aria-hidden="true"><use href="../assets/promo/icons.svg#arrow-up-right"></use></svg></a>
+    </div>
+  </header>
+  <main>
+    <div class="stage"><div class="phone"><iframe src="../index.html?preview=mobile" title="CardCosmic interactive mobile page" allow="clipboard-write"></iframe></div></div>
+  </main>
+  <script>
+    const screenSelect = document.querySelector('#screen');
+    const frame = document.querySelector('iframe');
+    const phone = document.querySelector('.phone');
+    const stage = document.querySelector('.stage');
+    function fitPhone() {
+      const [width, height] = screenSelect.value.split(',').map(Number);
+      const outerWidth = width + 16;
+      const outerHeight = height + 16;
+      const space = innerHeight - document.querySelector('header').offsetHeight - 32;
+      const scale = Math.min(1, (innerWidth - 32) / outerWidth, Math.max(240, space) / outerHeight);
+      frame.width = width;
+      frame.height = height;
+      phone.style.width = outerWidth + 'px';
+      phone.style.height = outerHeight + 'px';
+      phone.style.transform = `scale(${scale})`;
+      stage.style.width = outerWidth * scale + 'px';
+      stage.style.height = outerHeight * scale + 'px';
+    }
+    screenSelect.addEventListener('change', fitPhone);
+    window.addEventListener('resize', fitPhone);
+    document.querySelector('#refresh').addEventListener('click', () => frame.contentWindow.location.reload());
+    fitPhone();
+  </script>
+</body>
+</html>

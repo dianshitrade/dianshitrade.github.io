@@ -2,7 +2,11 @@
   "scripts": {
     "serve": "node scripts/serve.mjs",
     "check": "node scripts/check-site.mjs",
+    "build:motion": "node scripts/vendor-three.mjs",
     "generate:news": "node scripts/generate-news.mjs"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "three": "0.186.1"
+  }
 }

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { extname, join } from "node:path";
 
@@ -21,8 +21,9 @@ for (const file of htmlFiles) {
   if (!title) failures.push(`${file}: missing title`);
   if (!description) failures.push(`${file}: missing meta description`);
   if (!canonical) failures.push(`${file}: missing canonical`);
-  if (!html.includes("assets/styles.css")) failures.push(`${file}: missing stylesheet`);
-  if (!html.includes("assets/site.js")) failures.push(`${file}: missing site script`);
+  const isPromoPage = html.includes("data-promo-page");
+  if (!html.includes(isPromoPage ? "assets/promo.css" : "assets/styles.css")) failures.push(`${file}: missing stylesheet`);
+  if (!html.includes(isPromoPage ? "assets/promo.js" : "assets/site.js")) failures.push(`${file}: missing site script`);
 
   if (title) {
     if (titles.has(title)) failures.push(`${file}: duplicate title with ${titles.get(title)}`);
@@ -60,11 +61,30 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   failures.push("sitemap.xml: missing social-growth.html");
 }
 
-["tiktok.html", "instagram.html", "facebook.html"].forEach((file) => {
+["tiktok.html", "instagram.html"].forEach((file) => {
   const html = htmlByFile.get(file) || "";
   if (!html.includes("social-growth.html?utm_source=")) failures.push(`${file}: missing tracked social-growth link`);
   if (!html.includes("CC-NG-2026")) failures.push(`${file}: missing shared Nigeria invite code`);
   if (!html.includes("Trading involves risk")) failures.push(`${file}: missing risk disclaimer`);
+});
+
+["index.html", "facebook.html"].forEach((file) => {
+  const html = htmlByFile.get(file) || "";
+  ["data-promo-page", "000000", 'id="download"', "data-copy-code", "apps.apple.com/us/app/cardcosmic/id6756063147", "play.google.com/store/apps/details?id=app.com.cardlaxy", "Trading involves risk"].forEach(needle => {
+    if (!html.includes(needle)) failures.push(`${file}: missing campaign requirement ${needle}`);
+  });
+  if (html.includes("CC-NG-2026")) failures.push(`${file}: outdated invitation code`);
+  if (html.includes("assets/site.js")) failures.push(`${file}: legacy script would duplicate campaign pixel tracking`);
+  const catalog = html.match(/<ul class="card-grid">([\s\S]*?)<\/ul>/)?.[1] || "";
+  const cardNames = ["apple", "steam", "razergold", "sephora", "ebay", "xbox", "googleplay", "amazon", "amex", "vanilla", "visa", "target", "walmart", "footlocker", "gamestop", "macys", "nordstrom", "playstation", "roblox", "kohls", "cvs"];
+  if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected 21 distinct gift-card brands`);
+  for (const name of cardNames) {
+    if (!catalog.includes(`data-placement="card-${name}"`)) failures.push(`${file}: missing card ${name}`);
+    if (!existsSync(join(root, `assets/promo/${name}.png`))) failures.push(`${file}: missing logo ${name}`);
+  }
+  ["chime-service", "assets/promo-motion.js", "data-card-scene", 'id="reward-terms"', "&#8358;3,000"].forEach(needle => {
+    if (!html.includes(needle)) failures.push(`${file}: missing reward/catalog requirement ${needle}`);
+  });
 });
 
 if (failures.length) {

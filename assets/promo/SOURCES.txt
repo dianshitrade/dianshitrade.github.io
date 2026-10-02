@@ -1,0 +1,35 @@
+CardCosmic promotional page assets - 2026-10-02
+
+Logo and campaign artwork: supplied by the site owner. Optimized to WebP without modifying the content.
+App-in-hand product image: https://asset.cardlaxy.com/public/website/landing_img/hero/layer01.png?v=2
+Brand icons: https://asset.cardlaxy.com/public/card/{apple,steam,razergold,xbox,ebay,chime,sephora,googleplay,amazon,amex,vanilla,visa,target,walmart,footlocker,gamestop,macys,nordstrom,playstation,roblox,kohls,cvs}.png
+Catalog: 21 gift card brands plus Chime as a separate service, transcribed from the owner's three supplied app screenshots. Availability is checked in-app, not inferred from these illustrations.
+Store badges: https://asset.cardlaxy.com/public/website/img/market/{appstore,googleplay}-light.svg?v=2
+Source reference: https://www.cardcosmic.com/
+Secondary layout/reference: https://cardcosmics.com/ (its invitation code is not used).
+
+Manrope variable Latin font: Fontsource CDN. See MANROPE-LICENSE.txt.
+Interface icon sprite: generated from Lucide 1.8.0. See LUCIDE-LICENSE.txt.
+
+No unmasked gift-card redemption codes, user bank details, unverified ratings,
+download/registration totals or live rate claims are included.
+
+The owner requested the NGN 3,000 registration offer on 2026-10-02.
+The page states code 000000 + completed registration, subject to in-app campaign
+eligibility and terms. No immediate payment or unconditional withdrawal is promised.
+The offer's backend fulfillment has not been independently verified here.
+
+Motion reference: https://www.apple.com/iphone-18-pro/ (layout pacing only; no Apple page assets copied).
+Original 3D brand illustrations use CanvasTexture and locally bundled Three.js.
+Build: npm ci && npm run build:motion. See vendor/THREE-LICENSE.txt.
+Animation is lazily loaded, pauses offscreen and supports a static fallback.
+Pause/play symbols are from Lucide 1.8.0, covered by LUCIDE-LICENSE.txt.
+
+Campaign code: 000000. It is a string; keep all six leading zeros.
+The page does not automatically bind the code to an app account.
+
+Tracking, with visitor consent: Meta Pixel 1640453284465039.
+PageView = page visit; ReferralCodeCopy = successful clipboard copy;
+DownloadSectionClick = jump to download section; AppDownloadClick = app-store link click.
+AppDownloadClick does not prove installation. No CompleteRegistration event is sent.
+Verified code registration requires an app/backend integration.
