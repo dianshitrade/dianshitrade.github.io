@@ -14,9 +14,9 @@
   <meta property="og:url" content="https://cardcosmic.top/">
   <link rel="icon" type="image/webp" href="assets/promo/logo.webp">
   <link rel="preload" href="assets/promo/manrope.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/promo.css?v=20261002-motion">
+  <link rel="stylesheet" href="assets/promo.css?v=20261003-cards">
   <script src="assets/promo.js?v=20261002-motion" defer></script>
-  <script type="module" src="assets/promo-motion.js?v=20261002-motion"></script>
+  <script type="module" src="assets/promo-motion.js?v=20261003-cards"></script>
 </head>
 <body data-promo-page data-campaign-source="website">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -51,7 +51,10 @@
               <span class="code-label">YOUR INVITATION CODE</span>
               <div class="code-line"><strong class="invite-code">000000</strong><button class="copy-button" type="button" data-copy-code data-placement="hero" aria-label="Copy invitation code 000000" title="Copy invitation code"><svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#copy"></use></svg><span data-copy-label>Copy code</span></button></div>
             </div>
-            <a class="button button-dark hero-download" href="#download" data-placement="hero">Download the app <svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-down"></use></svg></a>
+            <div class="store-buttons hero-stores" aria-label="Download CardCosmic">
+              <a class="store-link" href="https://apps.apple.com/us/app/cardcosmic/id6756063147" data-store="app_store" data-placement="hero" target="_blank" rel="noopener noreferrer" aria-label="Download CardCosmic on the App Store (opens a new tab)"><img src="assets/promo/app-store.svg" width="136" height="41" alt="Download on the App Store"></a>
+              <a class="store-link" href="https://play.google.com/store/apps/details?id=app.com.cardlaxy" data-store="google_play" data-placement="hero" target="_blank" rel="noopener noreferrer" aria-label="Get CardCosmic on Google Play (opens a new tab)"><img src="assets/promo/google-play.svg" width="145" height="41" alt="Get it on Google Play"></a>
+            </div>
             <p class="registration-reminder">Don't skip <strong>000000</strong> at signup.<br><a href="#reward-terms">Reward eligibility and terms apply.</a></p>
           </div>
         </div>
@@ -63,14 +66,23 @@
         <div><p class="eyebrow">FAMILIAR BRANDS. FRESH POSSIBILITIES.</p><h2 id="cards-heading">Gift cards.<br>Ready for your next move.</h2></div>
         <a class="text-link" href="#card-catalog">Explore the brands <svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-down"></use></svg></a>
       </div>
-      <div class="card-scene" data-card-scene role="img" aria-label="A collection of Apple, Steam, Razer Gold, Xbox and eBay gift card illustrations">
+      <div class="card-scene" data-card-scene role="img" aria-label="Gift card illustrations from the 21 brands listed below">
         <div class="card-scene-fallback" aria-hidden="true">
           <div class="display-card card-steam"><img src="assets/promo/steam.png" alt="" width="64" height="64"><span>Steam</span><small>Gift card</small></div>
           <div class="display-card card-apple"><img src="assets/promo/apple.png" alt="" width="64" height="64"><span>Apple / iTunes</span><small>Gift card</small></div>
           <div class="display-card card-xbox"><img src="assets/promo/xbox.png" alt="" width="64" height="64"><span>Xbox</span><small>Gift card</small></div>
         </div>
       </div>
-      <div class="wrap scene-footer"><p>Brand illustrations. Card formats and availability vary.</p><button class="icon-button motion-toggle" type="button" data-motion-toggle aria-label="Pause gift card animation" title="Pause gift card animation" hidden><svg class="icon" aria-hidden="true"><use href="assets/promo/motion-icons.svg#pause"></use></svg></button></div>
+      <div class="wrap scene-toolbar" data-scene-controls hidden>
+        <div class="scene-selection"><select data-scene-select aria-label="Gift card brand"></select><span class="scene-count" data-scene-count>01 / 21</span></div>
+        <div class="scene-actions">
+          <button class="icon-button scene-previous" type="button" data-scene-prev aria-label="Previous gift card" title="Previous gift card"><svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-right"></use></svg></button>
+          <button class="icon-button" type="button" data-motion-toggle aria-label="Pause gift card animation" title="Pause gift card animation" hidden><svg class="icon" aria-hidden="true"><use href="assets/promo/motion-icons.svg#pause"></use></svg></button>
+          <button class="icon-button" type="button" data-scene-next aria-label="Next gift card" title="Next gift card"><svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-right"></use></svg></button>
+        </div>
+        <span class="sr-only" data-scene-announcement aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <div class="wrap scene-footer"><p>Brand illustrations. Card formats and availability vary.</p></div>
       <div class="wrap card-catalog" id="card-catalog">
         <div class="catalog-heading"><h3>Find your card.</h3><p>Check your card's country, value and current rate in the app.</p></div>
         <ul class="card-grid">

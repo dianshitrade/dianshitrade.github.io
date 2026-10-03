@@ -33,3 +33,13 @@ PageView = page visit; ReferralCodeCopy = successful clipboard copy;
 DownloadSectionClick = jump to download section; AppDownloadClick = app-store link click.
 AppDownloadClick does not prove installation. No CompleteRegistration event is sent.
 Verified code registration requires an app/backend integration.
+
+2026-10-04 conversion and motion update:
+Hero store badges reuse the existing official assets and destinations.
+AppDownloadClick retains platform, placement (hero or download), and page_source.
+The carousel includes all 21 catalog brands, with original procedural print artwork,
+laminated faces, paper roughness, bevels and soft shadows. These are illustrations,
+not issuer-supplied redeemable cards. No redemption codes or invented values are shown.
+Pointer/touch/keyboard and select-menu navigation are supported. Native vertical
+scrolling, reduced motion, data saving, consent controls and static fallbacks remain.
+Textures are 1536 x 960. The framebuffer follows device density within a 3.5 MP cap.

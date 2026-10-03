@@ -75,6 +75,13 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   });
   if (html.includes("CC-NG-2026")) failures.push(`${file}: outdated invitation code`);
   if (html.includes("assets/site.js")) failures.push(`${file}: legacy script would duplicate campaign pixel tracking`);
+  const heroStores = html.match(/<div class="store-buttons hero-stores"[\s\S]*?<\/div>/)?.[0] || "";
+  for (const store of ["app_store", "google_play"]) {
+    if (!heroStores.includes(`data-store="${store}" data-placement="hero"`)) failures.push(`${file}: missing tracked hero ${store} link`);
+  }
+  for (const control of ["data-scene-select", "data-scene-prev", "data-scene-next", "data-motion-toggle"]) {
+    if (!html.includes(control)) failures.push(`${file}: missing carousel control ${control}`);
+  }
   const catalog = html.match(/<ul class="card-grid">([\s\S]*?)<\/ul>/)?.[1] || "";
   const cardNames = ["apple", "steam", "razergold", "sephora", "ebay", "xbox", "googleplay", "amazon", "amex", "vanilla", "visa", "target", "walmart", "footlocker", "gamestop", "macys", "nordstrom", "playstation", "roblox", "kohls", "cvs"];
   if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected 21 distinct gift-card brands`);

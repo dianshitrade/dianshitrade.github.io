@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 await mkdir(`${root}assets/promo/vendor`, { recursive: true });
 await build({
   stdin: {
-    contents: "export { Scene, Group, PerspectiveCamera, WebGLRenderer, Mesh, MeshPhysicalMaterial, MeshBasicMaterial, Shape, ShapeGeometry, ExtrudeGeometry, CanvasTexture, SRGBColorSpace, AmbientLight, DirectionalLight, MathUtils, NoToneMapping } from 'three';",
+    contents: "export { Scene, Group, PerspectiveCamera, WebGLRenderer, Mesh, MeshPhysicalMaterial, MeshBasicMaterial, Shape, ShapeGeometry, ExtrudeGeometry, CanvasTexture, SRGBColorSpace, AmbientLight, DirectionalLight, MathUtils, NoToneMapping, PMREMGenerator, Raycaster, Vector2 } from 'three'; export { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';",
     resolveDir: root,
     sourcefile: "three-entry.js"
   },
