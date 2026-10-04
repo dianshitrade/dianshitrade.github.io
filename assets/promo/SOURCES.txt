@@ -67,3 +67,5 @@ checked 2026-10-04. Brand-published, not independent verified reviews; no added 
 Apple, eBay and Google Play vector silhouettes: Simple Icons, CC0,
 https://github.com/simple-icons/simple-icons/tree/develop/icons .
 Original brand-themed artwork remains an illustration, not an issuer-provided card.
+Mobile hero: app-in-hand-mobile.webp is a 420 px responsive derivative of the
+existing owner-approved hero, preserving its content. Desktop keeps the full asset.
