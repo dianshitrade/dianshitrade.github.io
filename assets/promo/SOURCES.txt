@@ -101,3 +101,21 @@ No fabricated recency, random customers or generated trades are added.
 Both pages contain the full static list, generated with npm run generate:trades.
 Motion pauses on hover, keyboard focus, touch, offscreen and in hidden tabs.
 Reduced-motion and no-JS visitors get a scrollable static list of all 40 rows.
+
+2026-10-05 store ratings and payout timing:
+Scores checked against the existing download destinations, not the supplied
+4.9 screenshots: App Store US 4.3/5 (3.5K ratings), Google Play US 4.2/5
+(8.23K reviews). Google Play's retrieved listing identifies United States.
+https://apps.apple.com/us/app/cardcosmic/id6756063147
+https://play.google.com/store/apps/details?id=app.com.cardlaxy
+App Store Nigeria instead shows 4.1/5 (2.3K ratings):
+https://apps.apple.com/ng/app/cardcosmic/id6756063147
+The compact download rows explicitly state US listings and the check date.
+Scores are a dated snapshot, not a live API feed. Rating links do not trigger
+AppDownloadClick. Existing download destinations and counts remain unchanged.
+The official website's Fast Pay Out feature says payments can reach an account
+in as little as 1 minute: https://www.cardcosmic.com/
+This is not a typical bank-crediting SLA or guaranteed deadline. The FAQ
+attributes that fastest-case claim and distinguishes verification and bank
+processing. The owner has been asked to confirm usual bank-arrival timing and
+the support escalation threshold; neither is invented while awaiting a reply.
