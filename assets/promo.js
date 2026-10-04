@@ -170,50 +170,53 @@
     if (link || !event.target.closest(".navigation")) setMenu(false);
   });
 
-  const tradeTabs = Array.from(document.querySelectorAll("[data-trade-tab]"));
-  const tradePanels = Array.from(document.querySelectorAll("[data-trade-panel]"));
-  const tradeTabList = document.querySelector("[data-trade-tabs]");
-  const tradeNavigation = document.querySelector("[data-trade-navigation]");
-  if (tradeTabList && tradeTabs.length === tradePanels.length && tradeTabs.length) {
+  function initializeStepGuide(name) {
+    const tabs = Array.from(document.querySelectorAll(`[data-${name}-tab]`));
+    const panels = Array.from(document.querySelectorAll(`[data-${name}-panel]`));
+    const tabList = document.querySelector(`[data-${name}-tabs]`);
+    const navigation = document.querySelector(`[data-${name}-navigation]`);
+    if (!tabList || !navigation || tabs.length !== panels.length || !tabs.length) return;
     let activeStep = 0;
     let transition;
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
     function showStep(index, focus = false) {
-      activeStep = (index + tradeTabs.length) % tradeTabs.length;
+      activeStep = (index + tabs.length) % tabs.length;
       transition?.cancel();
-      tradeTabs.forEach((tab, i) => {
+      tabs.forEach((tab, i) => {
         tab.setAttribute("aria-selected", String(i === activeStep));
         tab.tabIndex = i === activeStep ? 0 : -1;
-        tradePanels[i].hidden = i !== activeStep;
+        panels[i].hidden = i !== activeStep;
       });
-      document.querySelector("[data-trade-count]").textContent = `0${activeStep + 1} / 04`;
-      if (focus) tradeTabs[activeStep].focus({ preventScroll: true });
-      if (!reducedMotion.matches) transition = tradePanels[activeStep].animate(
+      navigation.querySelector(`[data-${name}-count]`).textContent = `${String(activeStep + 1).padStart(2, "0")} / ${String(tabs.length).padStart(2, "0")}`;
+      if (focus) tabs[activeStep].focus({ preventScroll: true });
+      if (!reducedMotion.matches) transition = panels[activeStep].animate(
         [{ opacity: .5, transform: "translateY(6px)" }, { opacity: 1, transform: "translateY(0)" }],
         { duration: 260, easing: "ease-out" }
       );
     }
-    tradeTabList.setAttribute("role", "tablist");
-    tradeTabs.forEach((tab, i) => {
+    tabList.setAttribute("role", "tablist");
+    tabs.forEach((tab, i) => {
       tab.setAttribute("role", "tab");
-      tab.setAttribute("aria-controls", tradePanels[i].id);
-      tradePanels[i].setAttribute("role", "tabpanel");
-      tradePanels[i].setAttribute("aria-labelledby", tab.id);
-      tradePanels[i].tabIndex = 0;
+      tab.setAttribute("aria-controls", panels[i].id);
+      panels[i].setAttribute("role", "tabpanel");
+      panels[i].setAttribute("aria-labelledby", tab.id);
+      panels[i].tabIndex = 0;
       tab.addEventListener("click", () => showStep(i));
       tab.addEventListener("keydown", event => {
-        const destinations = { ArrowLeft: activeStep - 1, ArrowRight: activeStep + 1, Home: 0, End: tradeTabs.length - 1 };
+        const destinations = { ArrowLeft: activeStep - 1, ArrowRight: activeStep + 1, Home: 0, End: tabs.length - 1 };
         if (!(event.key in destinations)) return;
         event.preventDefault();
         showStep(destinations[event.key], true);
       });
     });
-    tradeNavigation.querySelector("[data-trade-prev]").addEventListener("click", () => showStep(activeStep - 1));
-    tradeNavigation.querySelector("[data-trade-next]").addEventListener("click", () => showStep(activeStep + 1));
+    navigation.querySelector(`[data-${name}-prev]`).addEventListener("click", () => showStep(activeStep - 1));
+    navigation.querySelector(`[data-${name}-next]`).addEventListener("click", () => showStep(activeStep + 1));
     reducedMotion.addEventListener("change", () => { if (reducedMotion.matches) transition?.cancel(); });
-    tradeTabList.hidden = tradeNavigation.hidden = false;
+    tabList.hidden = navigation.hidden = false;
     showStep(0);
   }
+  initializeStepGuide("trade");
+  initializeStepGuide("referral");
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {

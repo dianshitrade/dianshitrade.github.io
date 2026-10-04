@@ -121,6 +121,16 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
     if (!existsSync(join(root, `assets/promo/trade-step-${i}.webp`))) failures.push(`${file}: missing trade image ${i}`);
   }
   if (!existsSync(join(root, "assets/promo/referral-program.webp"))) failures.push(`${file}: missing referral screen`);
+  const referral = html.match(/<section class="section referral-section"[\s\S]*?<\/section>/)?.[0] || "";
+  for (const requirement of ['id="referral"', "data-referral-tabs", "data-referral-navigation", "your own personal code", "not just referral rewards", "Referral Program Rules"]) {
+    if (!referral.includes(requirement)) failures.push(`${file}: missing referral guide requirement ${requirement}`);
+  }
+  const referralScreens = ["referral-program", "referral-invites", "referral-rewards", "referral-balance"];
+  referralScreens.forEach((screen, index) => {
+    const panel = referral.match(new RegExp(`<article class="referral-panel" id="referral-panel-${index + 1}"[\\s\\S]*?</article>`))?.[0] || "";
+    if (!referral.includes(`id="referral-tab-${index + 1}"`) || !panel.includes(`assets/promo/${screen}.webp`)) failures.push(`${file}: missing ordered referral step ${index + 1}`);
+    if (!panel.includes('loading="lazy"') || !existsSync(join(root, `assets/promo/${screen}.webp`))) failures.push(`${file}: missing lazy-loaded referral image ${screen}`);
+  });
   const catalog = html.match(/<ul class="card-grid">([\s\S]*?)<\/ul>/)?.[1] || "";
   const cardNames = ["apple", "steam", "razergold", "sephora", "ebay", "xbox", "googleplay", "amazon", "amex", "vanilla", "visa", "target", "walmart", "footlocker", "gamestop", "macys", "nordstrom", "playstation", "roblox", "kohls", "cvs"];
   if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected the existing featured gift-card collection`);

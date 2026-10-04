@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://cardcosmic.top/">
   <link rel="icon" type="image/webp" href="assets/promo/logo.webp">
   <link rel="preload" href="assets/promo/manrope.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/promo.css?v=20261005-ratings">
-  <script src="assets/promo.js?v=20261004-registration" defer></script>
+  <link rel="stylesheet" href="assets/promo.css?v=20261005-referral">
+  <script src="assets/promo.js?v=20261005-referral" defer></script>
   <script type="module" src="assets/promo-motion.js?v=20261005-reviews"></script>
   <script type="module" src="assets/promo-trades.js?v=20261005-reviews"></script>
 </head>
@@ -215,8 +215,33 @@
       </div>
     </section>
 
-    <section class="section referral-section" aria-labelledby="referral-heading">
-      <div class="wrap referral-layout"><div><p class="eyebrow">AFTER YOU JOIN</p><h2 id="referral-heading">Your own code.<br>A <span>1% trade bonus.</span></h2><p class="body-copy">Register with <strong>000000</strong>, then find your personal referral code in the Friends section. Share your own code with friends and earn a <strong>1% bonus on their eligible successful trades</strong>, subject to the Referral Program Rules.</p><ol class="referral-steps"><li>Create your CardCosmic account.</li><li>Share your own personal referral code.</li><li>Track qualifying rewards in your account.</li></ol><p class="referral-terms">The app's Referral Program Rules determine qualification, the reward calculation base, crediting and withdrawal conditions. The 1% is a referral trade bonus, not interest on a balance or guaranteed income.</p><a class="text-link" href="#download" data-placement="referral">Create your account <svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-up-right"></use></svg></a></div><figure class="referral-proof"><img src="assets/promo/referral-program.webp" width="600" height="1302" alt="CardCosmic Friends screen displaying the 1 percent trade bonus and Referral Program Rules" loading="lazy"><figcaption>CardCosmic referral screen. Your personal code may differ. All referral offers are subject to the in-app rules.</figcaption></figure></div>
+    <section class="section referral-section" id="referral" aria-labelledby="referral-heading">
+      <div class="wrap">
+        <div class="referral-heading"><div><p class="eyebrow">AFTER YOU JOIN</p><h2 id="referral-heading">Your own code.<br>A <span>1% trade bonus.</span></h2></div><p class="body-copy">Register with <strong>000000</strong>, then invite friends with <strong>your own personal code</strong>. Earn a <strong>1% bonus on their eligible successful trades</strong>, subject to the Referral Program Rules.</p></div>
+        <div class="referral-tabs" data-referral-tabs aria-label="Referral reward steps" hidden>
+          <button type="button" id="referral-tab-1" data-referral-tab="0">01 <span>Share</span></button><button type="button" id="referral-tab-2" data-referral-tab="1">02 <span>Invites</span></button><button type="button" id="referral-tab-3" data-referral-tab="2">03 <span>Rewards</span></button><button type="button" id="referral-tab-4" data-referral-tab="3">04 <span>Balance</span></button>
+        </div>
+        <div class="referral-panels">
+          <article class="referral-panel" id="referral-panel-1" data-referral-panel>
+            <div class="referral-description"><span class="step-kicker">01 / SHARE YOUR PERSONAL CODE</span><h3>Invite a friend.<br>Start with your code.</h3><p>After signing up, open <strong>Friends</strong> or <strong>Referral</strong> in the app. Copy your personal referral code or use <strong>Invite My Friends</strong>.</p><p>Ask your friends to enter <strong>your code during registration</strong> so their qualifying trades can be linked to you.</p><p class="referral-detail">000000 is the code for joining through this page. Once you have an account, share the personal code shown in your own app.</p></div>
+            <figure class="referral-proof"><a href="assets/promo/referral-program.webp" target="_blank" rel="noopener" aria-label="Open full Friends screenshot (opens a new tab)"><img src="assets/promo/referral-program.webp" width="600" height="1302" alt="Friends screen with referral code, Invite My Friends and the 1 percent trade bonus" loading="lazy" decoding="async"></a><figcaption>Friends screen. Your personal code and referral offers may differ.</figcaption></figure>
+          </article>
+          <article class="referral-panel" id="referral-panel-2" data-referral-panel>
+            <div class="referral-description"><span class="step-kicker">02 / TRACK YOUR INVITES</span><h3>See who joined.<br>Follow your progress.</h3><p>Open <strong>Referral</strong> to see <strong>Total Invited</strong>, your last 7 days, yesterday and today. The <strong>30-Day Activity</strong> list gives you a daily breakdown.</p><p class="referral-detail">An invitation count is not a completed trade. The 1% bonus depends on your referred friends' qualifying successful trades and the in-app rules.</p></div>
+            <figure class="referral-proof"><a href="assets/promo/referral-invites.webp" target="_blank" rel="noopener" aria-label="Open full referral activity screenshot (opens a new tab)"><img src="assets/promo/referral-invites.webp" width="600" height="1303" alt="Referral dashboard showing the personal code, total invited and daily invitation activity" loading="lazy" decoding="async"></a><figcaption>Example account activity. Invitation counts are not earnings.</figcaption></figure>
+          </article>
+          <article class="referral-panel" id="referral-panel-3" data-referral-panel>
+            <div class="referral-description"><span class="step-kicker">03 / CHECK YOUR REWARD ENTRIES</span><h3>Their eligible trades.<br>Your reward records.</h3><p>When a referred friend completes a qualifying trade, check <strong>Transactions</strong> for a <strong>Referral reward</strong> entry.</p><p>Review the credited amount and its transaction record in your own account.</p><p class="referral-detail">Rewards vary with qualifying activity. The amounts shown here are examples, not a fixed payment per friend or a promise of future earnings.</p></div>
+            <figure class="referral-proof"><a href="assets/promo/referral-rewards.webp" target="_blank" rel="noopener" aria-label="Open full reward transactions screenshot (opens a new tab)"><img src="assets/promo/referral-rewards.webp" width="590" height="1280" alt="Transactions screen with multiple Referral reward credits and a separate withdrawal entry" loading="lazy" decoding="async"></a><figcaption>Example reward history, not a live feed or guaranteed income.</figcaption></figure>
+          </article>
+          <article class="referral-panel" id="referral-panel-4" data-referral-panel>
+            <div class="referral-description"><span class="step-kicker">04 / REVIEW YOUR BALANCE</span><h3>Back to Home.<br>Your next withdrawal.</h3><p>Return to <strong>Home</strong> to review your balance, then open <strong>Withdrawal</strong> to check the amount available to withdraw and your supported payout methods.</p><p class="referral-detail">Your total balance may include trading proceeds and other credits, not just referral rewards. Check verification requirements, withdrawal limits and fees before confirming.</p></div>
+            <figure class="referral-proof"><a href="assets/promo/referral-balance.webp" target="_blank" rel="noopener" aria-label="Open full home balance screenshot (opens a new tab)"><img src="assets/promo/referral-balance.webp" width="600" height="1297" alt="Home screen showing account balance, Withdrawal and the Referral shortcut" loading="lazy" decoding="async"></a><figcaption>Example Home screen. Balance is not a referral earnings total.</figcaption></figure>
+          </article>
+        </div>
+        <div class="referral-navigation" data-referral-navigation hidden><span data-referral-count aria-live="polite">01 / 04</span><button class="icon-button scene-previous" data-referral-prev type="button" aria-label="Previous referral step" title="Previous referral step"><svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-right"></use></svg></button><button class="icon-button" data-referral-next type="button" aria-label="Next referral step" title="Next referral step"><svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-right"></use></svg></button></div>
+        <div class="referral-footer"><p class="referral-terms">The app's Referral Program Rules determine qualification, the reward calculation base, crediting and withdrawal conditions. The 1% is a referral trade bonus, not interest on a balance or guaranteed income.</p><a class="text-link" href="#download" data-placement="referral">Create your account <svg class="icon" aria-hidden="true"><use href="assets/promo/icons.svg#arrow-up-right"></use></svg></a></div>
+      </div>
     </section>
 
     <section class="customer-notes" aria-labelledby="reviews-heading">

@@ -119,3 +119,18 @@ This is not a typical bank-crediting SLA or guaranteed deadline. The FAQ
 attributes that fastest-case claim and distinguishes verification and bank
 processing. The owner has been asked to confirm usual bank-arrival timing and
 the support escalation threshold; neither is invented while awaiting a reply.
+
+2026-10-05 four-step referral guide:
+Owner-supplied images from the 获得1%奖励页面 folder, in the requested order:
+1. 1%交易奖励.png -> existing referral-program.webp (Friends / invite code).
+2. 人数显示.png -> referral-invites.webp (invitation counts and activity).
+3. 获得奖励显示.jpg -> referral-rewards.webp (Referral reward credits).
+4. eeb4076f-0f67-457b-bc16-38d10c84b0dd.png -> referral-balance.webp (Home).
+Images optimized to WebP, maximum 600 px wide, without changing screen content.
+Their values are example account records, not a live feed or promised earnings.
+The Home balance is not represented as exclusively referral income or as the
+entire amount available to withdraw. No currency is invented for unlabelled
+transaction entries. In-app eligibility, crediting and withdrawal rules apply.
+Joining through this page uses 000000; inviting others uses the member's own
+personal code. The guide reuses the existing keyboard-accessible step controls,
+has no autoplay, respects reduced motion and shows all four steps without JS.

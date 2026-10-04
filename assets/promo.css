@@ -379,16 +379,37 @@ details a{text-decoration:underline;text-underline-offset:3px}
 .guide-navigation .icon-button{border:1px solid #69746e;border-radius:50%;color:#fff}
 .guide-navigation .icon-button:hover{background:#3b4942}
 .referral-section{background:#edf4ef}
-.referral-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:100px;align-items:center}
-.referral-layout h2 span{color:#166647}
-.referral-layout .body-copy{max-width:560px}
-.referral-steps{padding:0;list-style:none;counter-reset:referral;margin:28px 0 20px}
-.referral-steps li{counter-increment:referral;display:flex;align-items:center;gap:16px;font-size:14px;margin:14px 0}
-.referral-steps li::before{content:"0" counter(referral);font-size:11px;font-weight:800;color:#167c50}
-.referral-terms{font-size:11px;line-height:1.8;color:#596861;max-width:520px;margin-bottom:24px}
-.referral-proof{display:flex;flex-direction:column;align-items:center}
-.referral-proof img{width:225px;max-width:100%;height:auto;border:1px solid #d3ddd7;border-radius:8px;box-shadow:0 16px 28px #28423712}
-.referral-proof figcaption{font-size:10px;color:#596861;text-align:center;max-width:290px;margin-top:16px}
+.referral-heading{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:end;margin-bottom:36px}
+.referral-heading h2 span{color:#166647}
+.referral-heading .body-copy{max-width:500px;margin:0;font-size:15px}
+.referral-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid #b7c9bf;margin-bottom:28px}
+.referral-tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:#596861;text-align:left;font-size:11px;min-height:58px;padding:14px 12px}
+.referral-tabs button span{font-size:15px;font-weight:750;margin-left:12px;color:var(--ink)}
+.referral-tabs button[aria-selected="true"]{border-color:var(--green);color:var(--green);background:#dfece3}
+.referral-tabs button:hover{background:#e4eee7}
+.referral-panel{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:64px;min-height:654px}
+.referral-panel+.referral-panel{margin-top:28px}
+.referral-tabs:not([hidden])+.referral-panels .referral-panel{margin-top:0}
+.referral-description{min-width:0;max-width:500px}
+.referral-description .step-kicker{color:#166647}
+.referral-description h3{font-size:32px;line-height:1.25;margin-top:16px}
+.referral-description>p{font-size:15px;line-height:1.8;margin-top:20px;color:#405149}
+.referral-description>.referral-detail{font-size:12px;color:#596861;margin-top:18px}
+.referral-proof{display:flex;flex-direction:column;align-items:center;min-width:0}
+.referral-proof>a{display:block;width:280px;max-width:100%;aspect-ratio:600/1303;border-radius:8px;overflow:hidden;box-shadow:0 16px 28px #28423712}
+.referral-proof img{width:100%;height:100%;object-fit:contain;background:#f4f5f3}
+.referral-proof figcaption{font-size:10px;line-height:1.6;color:#596861;text-align:center;width:320px;max-width:100%;min-height:32px;margin-top:14px}
+.referral-navigation{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:18px}
+.referral-navigation>span{margin-right:12px;font-size:12px;color:#405149;font-variant-numeric:tabular-nums}
+.referral-navigation .icon-button{width:44px;height:44px;border:1px solid #b7c9bf;background:transparent;color:#166647}
+.referral-navigation .icon-button:hover{background:#dfece3}
+.referral-footer{display:flex;align-items:center;justify-content:space-between;gap:40px;border-top:1px solid #cbd9d0;margin-top:28px;padding-top:24px}
+.referral-terms{font-size:11px;line-height:1.8;color:#596861;max-width:680px}
+.referral-footer .text-link{flex-shrink:0}
+@media(max-width:1000px){.referral-heading,.referral-panel{gap:36px}.referral-description h3{font-size:28px}}
+@media(max-width:760px){.referral-heading{grid-template-columns:1fr;gap:18px}.referral-heading .body-copy{max-width:600px;font-size:14px}.referral-panel{gap:28px;grid-template-columns:1fr 1fr}.referral-proof>a{width:245px}.referral-panel{min-height:580px}.referral-description>p{font-size:13px}.referral-footer{gap:24px}}
+@media(max-width:640px){.referral-heading{margin-bottom:24px}.referral-heading h2{font-size:30px}.referral-tabs{margin-bottom:24px}.referral-tabs button{padding:10px 4px;text-align:center;min-height:60px;font-size:10px}.referral-tabs button span{display:block;font-size:12px;margin:4px 0 0}.referral-panel{grid-template-columns:1fr;gap:24px;align-items:start;min-height:920px}.referral-description{min-height:310px;max-width:none}.referral-description h3{font-size:26px;margin-top:10px}.referral-description>p{margin-top:14px}.referral-description>.referral-detail{font-size:11px;margin-top:12px}.referral-proof>a{width:245px}.referral-proof figcaption{font-size:9px;margin-top:12px}.referral-navigation{margin-top:12px}.referral-footer{align-items:flex-start;flex-direction:column;gap:20px}.referral-terms{font-size:10px}}
+@media(max-width:360px){.referral-panel{min-height:950px}.referral-description{min-height:350px}}
 .transaction-section{padding:64px 0;border-top:1px solid var(--line)}
 .transaction-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
 .transaction-intro h2{font-size:34px;line-height:1.25}
@@ -431,10 +452,10 @@ details a{text-decoration:underline;text-underline-offset:3px}
 .review-source{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:8px 20px;font-size:11px;color:var(--muted);margin-top:28px}
 .review-source a{display:inline-flex;align-items:center;gap:5px;min-height:44px;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:1000px){
-  .hero-title{font-size:33px}.trade-panel{gap:44px}.referral-layout{gap:50px}.customer-notes>.wrap:first-child{gap:24px}.proof-stats dt{font-size:28px}
+  .hero-title{font-size:33px}.trade-panel{gap:44px}.customer-notes>.wrap:first-child{gap:24px}.proof-stats dt{font-size:28px}
 }
 @media(max-width:760px){
-  .why-intro{position:static}.trade-panel{gap:30px;grid-template-columns:.9fr 1.1fr}.trade-description h3{font-size:28px}.trade-description>p{font-size:13px}.referral-layout{gap:32px}.referral-layout h2{font-size:30px}.customer-notes>.wrap:first-child{grid-template-columns:1fr 1fr}.customer-notes>.wrap>div{grid-column:1/-1}.rate-bridge{flex-direction:column;align-items:flex-start;gap:20px}
+  .why-intro{position:static}.trade-panel{gap:30px;grid-template-columns:.9fr 1.1fr}.trade-description h3{font-size:28px}.trade-description>p{font-size:13px}.customer-notes>.wrap:first-child{grid-template-columns:1fr 1fr}.customer-notes>.wrap>div{grid-column:1/-1}.rate-bridge{flex-direction:column;align-items:flex-start;gap:20px}
 }
 @media(max-width:640px){
   .reward-ribbon p{max-width:none;font-size:10px;line-height:1.6}.reward-ribbon>.wrap{gap:10px;padding-block:9px}.reward-ribbon a{font-size:9px}
@@ -454,7 +475,6 @@ details a{text-decoration:underline;text-underline-offset:3px}
   .trade-description h3{font-size:28px;margin-top:12px}.trade-description>p{font-size:13px;line-height:1.75;margin-top:16px}.trade-description>.trade-detail{font-size:11px;margin-top:12px}.step-kicker{font-size:10px}
   .trade-description .text-link,.trade-description .inline-copy{margin-top:12px}
   .guide-navigation{margin-top:14px}.guide-navigation .icon-button{width:44px;height:44px}
-  .referral-layout{grid-template-columns:1fr;gap:34px}.referral-layout h2{font-size:30px}.referral-steps li{font-size:13px}.referral-proof img{width:210px}.referral-terms{font-size:11px}
   .customer-notes{padding:40px 0}.customer-notes>.wrap:first-child{grid-template-columns:1fr;gap:28px}.customer-notes blockquote{padding-left:18px}.customer-notes blockquote>p{font-size:16px}.customer-notes h2{font-size:26px}.customer-notes cite{font-size:12px}.review-source{justify-content:flex-start;gap:0 20px;margin-top:22px}.review-source>span{flex-basis:100%}
 }
 @media(max-width:360px){
