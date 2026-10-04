@@ -164,8 +164,56 @@
     if (link?.dataset.store) {
       trackAction("AppDownloadClick", { platform: link.dataset.store, placement: link.dataset.placement });
     }
+    if (link?.hasAttribute("data-web-app")) {
+      trackAction("WebAppClick", { placement: link.dataset.placement });
+    }
     if (link || !event.target.closest(".navigation")) setMenu(false);
   });
+
+  const tradeTabs = Array.from(document.querySelectorAll("[data-trade-tab]"));
+  const tradePanels = Array.from(document.querySelectorAll("[data-trade-panel]"));
+  const tradeTabList = document.querySelector("[data-trade-tabs]");
+  const tradeNavigation = document.querySelector("[data-trade-navigation]");
+  if (tradeTabList && tradeTabs.length === tradePanels.length && tradeTabs.length) {
+    let activeStep = 0;
+    let transition;
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+    function showStep(index, focus = false) {
+      activeStep = (index + tradeTabs.length) % tradeTabs.length;
+      transition?.cancel();
+      tradeTabs.forEach((tab, i) => {
+        tab.setAttribute("aria-selected", String(i === activeStep));
+        tab.tabIndex = i === activeStep ? 0 : -1;
+        tradePanels[i].hidden = i !== activeStep;
+      });
+      document.querySelector("[data-trade-count]").textContent = `0${activeStep + 1} / 04`;
+      if (focus) tradeTabs[activeStep].focus({ preventScroll: true });
+      if (!reducedMotion.matches) transition = tradePanels[activeStep].animate(
+        [{ opacity: .5, transform: "translateY(6px)" }, { opacity: 1, transform: "translateY(0)" }],
+        { duration: 260, easing: "ease-out" }
+      );
+    }
+    tradeTabList.setAttribute("role", "tablist");
+    tradeTabs.forEach((tab, i) => {
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", tradePanels[i].id);
+      tradePanels[i].setAttribute("role", "tabpanel");
+      tradePanels[i].setAttribute("aria-labelledby", tab.id);
+      tradePanels[i].tabIndex = 0;
+      tab.addEventListener("click", () => showStep(i));
+      tab.addEventListener("keydown", event => {
+        const destinations = { ArrowLeft: activeStep - 1, ArrowRight: activeStep + 1, Home: 0, End: tradeTabs.length - 1 };
+        if (!(event.key in destinations)) return;
+        event.preventDefault();
+        showStep(destinations[event.key], true);
+      });
+    });
+    tradeNavigation.querySelector("[data-trade-prev]").addEventListener("click", () => showStep(activeStep - 1));
+    tradeNavigation.querySelector("[data-trade-next]").addEventListener("click", () => showStep(activeStep + 1));
+    reducedMotion.addEventListener("change", () => { if (reducedMotion.matches) transition?.cancel(); });
+    tradeTabList.hidden = tradeNavigation.hidden = false;
+    showStep(0);
+  }
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {

@@ -11,12 +11,13 @@ Secondary layout/reference: https://cardcosmics.com/ (its invitation code is not
 Manrope variable Latin font: Fontsource CDN. See MANROPE-LICENSE.txt.
 Interface icon sprite: generated from Lucide 1.8.0. See LUCIDE-LICENSE.txt.
 
-No unmasked gift-card redemption codes, user bank details, unverified ratings,
-download/registration totals or live rate claims are included.
+No unmasked gift-card redemption codes, full bank details, invented ratings or
+live rate claims are included. Platform-reported statistics are labelled below.
 
 The owner requested the NGN 3,000 registration offer on 2026-10-02.
-The page states code 000000 + completed registration, subject to in-app campaign
-eligibility and terms. No immediate payment or unconditional withdrawal is promised.
+Updated 2026-10-04 by the owner: code 000000 + registration + first successful
+eligible gift-card trade unlocks the NGN 3,000 cash reward for withdrawal.
+Registration alone does not unlock withdrawal. In-app campaign terms apply.
 The offer's backend fulfillment has not been independently verified here.
 
 Motion reference: https://www.apple.com/iphone-18-pro/ (layout pacing only; no Apple page assets copied).
@@ -43,3 +44,26 @@ not issuer-supplied redeemable cards. No redemption codes or invented values are
 Pointer/touch/keyboard and select-menu navigation are supported. Native vertical
 scrolling, reduced motion, data saving, consent controls and static fallbacks remain.
 Textures are 1536 x 960. The framebuffer follows device density within a 3.5 MP cap.
+
+2026-10-04 registration and trust update:
+Owner confirms 2M+ is combined downloads AND registrations, NOT unique users;
+these counts can overlap. 100+ support staff, NGN 1.2B+ daily trading volume,
+24/7 support and 30-second initial SI checks are platform-reported, not audited.
+Initial checks are not guaranteed trade/payout times. Automated checks reduce
+manual handling; zero risk, no-human-access and highest-rate guarantees are not made.
+No lifetime referral promise: the supplied Friends screenshot shows a 1% trade
+bonus. Its calculation base and eligibility remain governed by in-app rules.
+Web sign-in: https://app.cardcosmic.com/signIn/ (no invented referral query parameter).
+Verified /signUp/ on 2026-10-04: new registration is currently app-only. The web
+page explicitly directs new users to download the app. Do not label it web signup.
+WebAppClick measures this outbound click, NOT a completed registration.
+Four product screens: owner-provided 01.png, 02.png, 03.png and 取款.png.
+These match the official site's landing_img/screens/01.png through 04.png.
+Optimized to WebP without changing screen content. Their balances/fees/rates
+are labelled as illustrative, not live quotes, verified payouts or promised earnings.
+Referral screen: owner-provided 1%交易奖励.png, optimized to referral-program.webp.
+Customer excerpts (10 words total): CardCosmic website, https://www.cardcosmic.com/,
+checked 2026-10-04. Brand-published, not independent verified reviews; no added stars.
+Apple, eBay and Google Play vector silhouettes: Simple Icons, CC0,
+https://github.com/simple-icons/simple-icons/tree/develop/icons .
+Original brand-themed artwork remains an illustration, not an issuer-provided card.

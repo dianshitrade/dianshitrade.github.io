@@ -82,6 +82,14 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   for (const control of ["data-scene-select", "data-scene-prev", "data-scene-next", "data-motion-toggle"]) {
     if (!html.includes(control)) failures.push(`${file}: missing carousel control ${control}`);
   }
+  for (const requirement of ["combined downloads &amp; registrations", "not unique users", "Registration alone does not unlock withdrawal", "first successful eligible gift-card trade", "data-web-app", "https://app.cardcosmic.com/", "1% trade bonus", "not independently verified reviews", "not a guaranteed trade or payout time", "New accounts register in the mobile app"]) {
+    if (!html.includes(requirement)) failures.push(`${file}: missing qualified conversion copy ${requirement}`);
+  }
+  for (let i = 1; i <= 4; i++) {
+    if (!html.includes(`id="trade-panel-${i}"`) || !html.includes(`id="trade-tab-${i}"`)) failures.push(`${file}: missing trade step ${i}`);
+    if (!existsSync(join(root, `assets/promo/trade-step-${i}.webp`))) failures.push(`${file}: missing trade image ${i}`);
+  }
+  if (!existsSync(join(root, "assets/promo/referral-program.webp"))) failures.push(`${file}: missing referral screen`);
   const catalog = html.match(/<ul class="card-grid">([\s\S]*?)<\/ul>/)?.[1] || "";
   const cardNames = ["apple", "steam", "razergold", "sephora", "ebay", "xbox", "googleplay", "amazon", "amex", "vanilla", "visa", "target", "walmart", "footlocker", "gamestop", "macys", "nordstrom", "playstation", "roblox", "kohls", "cvs"];
   if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected 21 distinct gift-card brands`);

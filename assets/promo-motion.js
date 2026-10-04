@@ -1,4 +1,4 @@
-import { cardDefinitions, createCardArtwork } from "./promo-card-art.js?v=20261003-cards";
+import { cardDefinitions, createCardArtwork } from "./promo-card-art.js?v=20261004-registration";
 
 const stage = document.querySelector("[data-card-scene]");
 const toggle = document.querySelector("[data-motion-toggle]");
@@ -48,7 +48,7 @@ if (stage && "IntersectionObserver" in window) {
   const loader = new IntersectionObserver(([entry]) => {
     nearby = entry.isIntersecting;
     void loadScene();
-  }, { rootMargin: "300px" });
+  }, { rootMargin: "100px" });
   loader.observe(stage);
   motionPreference.addEventListener("change", () => {
     if (motionPreference.matches) {
@@ -113,11 +113,11 @@ async function createScene(T) {
     const pmrem = new T.PMREMGenerator(renderer);
     environment = pmrem.fromScene(room, .04);
     scene.environment = environment.texture;
-    scene.environmentIntensity = .65;
+    scene.environmentIntensity = .45;
     room.dispose();
     pmrem.dispose();
-    scene.add(new T.AmbientLight(0xffffff, .7));
-    const keyLight = new T.DirectionalLight(0xffffff, 1.7);
+    scene.add(new T.AmbientLight(0xffffff, .45));
+    const keyLight = new T.DirectionalLight(0xffffff, 1.05);
     keyLight.position.set(-5, 6, 9);
     scene.add(keyLight);
 
