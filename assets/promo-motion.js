@@ -94,7 +94,7 @@ async function createScene(T) {
     stage.removeAttribute("tabindex");
     stage.removeAttribute("aria-roledescription");
     stage.setAttribute("role", "img");
-    stage.setAttribute("aria-label", "Gift card illustrations from the 21 brands listed below");
+    stage.setAttribute("aria-label", "Featured gift card illustrations");
     toggle.hidden = controls.hidden = true;
   }
 
@@ -225,10 +225,9 @@ async function createScene(T) {
     function updateSelection(announce = false) {
       const i = wrap(Math.round(target));
       select.value = String(i);
-      document.querySelector("[data-scene-count]").textContent = `${String(i + 1).padStart(2, "0")} / ${count}`;
       stage.dataset.activeBrand = definitions[i].id;
-      stage.setAttribute("aria-label", `${definitions[i].name} gift card, ${i + 1} of ${count}`);
-      if (announce) document.querySelector("[data-scene-announcement]").textContent = `${definitions[i].name}, ${i + 1} of ${count}`;
+      stage.setAttribute("aria-label", `${definitions[i].name} gift card`);
+      if (announce) document.querySelector("[data-scene-announcement]").textContent = `${definitions[i].name} gift card`;
     }
 
     function choose(value, manual = true) {

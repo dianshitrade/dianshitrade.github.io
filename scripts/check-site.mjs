@@ -82,9 +82,28 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   for (const control of ["data-scene-select", "data-scene-prev", "data-scene-next", "data-motion-toggle"]) {
     if (!html.includes(control)) failures.push(`${file}: missing carousel control ${control}`);
   }
-  for (const requirement of ["combined downloads &amp; registrations", "not unique users", "Registration alone does not unlock withdrawal", "first successful eligible gift-card trade", "data-web-app", "https://app.cardcosmic.com/", "1% trade bonus", "not independently verified reviews", "not a guaranteed trade or payout time", "New accounts register in the mobile app"]) {
+  for (const requirement of ["combined downloads &amp; registrations", "Registration alone does not unlock withdrawal", "first successful eligible gift-card trade", "data-web-app", "https://app.cardcosmic.com/", "1% trade bonus", "not a guaranteed trade or payout time", "New accounts register in the mobile app"]) {
     if (!html.includes(requirement)) failures.push(`${file}: missing qualified conversion copy ${requirement}`);
   }
+  for (const removed of ["Figures supplied by CardCosmic, October 2026", "Illustrative app preview. Not a live quote.", "#platform-data", "21 BRANDS", "01 / 21", "21 brands", "data-scene-count", "VOICES FROM CARDCOSMIC'S WEBSITE", "Jerome Bell", "Annette Black"]) {
+    if (html.includes(removed)) failures.push(`${file}: outdated count, notice or testimonial ${removed}`);
+  }
+  for (const label of ["<dt>23+</dt><dd>gift-card brands</dd>", "23+ BRANDS. ONE PLACE TO TRADE.", "23+ brands"]) {
+    if (!html.includes(label)) failures.push(`${file}: missing supported brand total ${label}`);
+  }
+  const reviews = html.match(/<section class="customer-notes"[\s\S]*?<\/section>/)?.[0] || "";
+  for (const text of ["DON-MARK 12", "Ibrahimovicjnr", "Selected App Store review excerpts.", "Source: App Store", "apps.apple.com/us/app/cardcosmic/id6756063147", "play.google.com/store/apps/details?id=app.com.cardlaxy"]) {
+    if (!reviews.includes(text)) failures.push(`${file}: missing review attribution ${text}`);
+  }
+  if ((reviews.match(/aria-label="5 out of 5 stars"/g) || []).length !== 2) failures.push(`${file}: expected the two screenshot review ratings`);
+  if (reviews.includes("data-store=")) failures.push(`${file}: review-source clicks must not count as download clicks`);
+  const transactions = html.match(/<section class="transaction-section"[\s\S]*?<\/section>/)?.[0] || "";
+  if ((transactions.match(/data-record="\d+"/g) || []).length !== 40) failures.push(`${file}: expected all 40 distinct screenshot transactions`);
+  for (const text of ["Selected completed trades", "data-trades-viewport", "data-trades-toggle", "data-trades-list"]) {
+    if (!transactions.includes(text)) failures.push(`${file}: missing transaction replay requirement ${text}`);
+  }
+  if (/minutes? ago|hours? ago|Just Sold!|Hundreds of Transactions|\bLive\b/i.test(transactions)) failures.push(`${file}: fixed records presented as current activity`);
+  if (/screenshot|replay|Time at capture/i.test(transactions)) failures.push(`${file}: outdated transaction presentation`);
   for (let i = 1; i <= 4; i++) {
     if (!html.includes(`id="trade-panel-${i}"`) || !html.includes(`id="trade-tab-${i}"`)) failures.push(`${file}: missing trade step ${i}`);
     if (!existsSync(join(root, `assets/promo/trade-step-${i}.webp`))) failures.push(`${file}: missing trade image ${i}`);
@@ -92,7 +111,7 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   if (!existsSync(join(root, "assets/promo/referral-program.webp"))) failures.push(`${file}: missing referral screen`);
   const catalog = html.match(/<ul class="card-grid">([\s\S]*?)<\/ul>/)?.[1] || "";
   const cardNames = ["apple", "steam", "razergold", "sephora", "ebay", "xbox", "googleplay", "amazon", "amex", "vanilla", "visa", "target", "walmart", "footlocker", "gamestop", "macys", "nordstrom", "playstation", "roblox", "kohls", "cvs"];
-  if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected 21 distinct gift-card brands`);
+  if ((catalog.match(/<li>/g) || []).length !== cardNames.length) failures.push(`${file}: expected the existing featured gift-card collection`);
   for (const name of cardNames) {
     if (!catalog.includes(`data-placement="card-${name}"`)) failures.push(`${file}: missing card ${name}`);
     if (!existsSync(join(root, `assets/promo/${name}.png`))) failures.push(`${file}: missing logo ${name}`);

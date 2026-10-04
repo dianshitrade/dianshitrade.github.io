@@ -1,7 +1,8 @@
 {
   "scripts": {
     "serve": "node scripts/serve.mjs",
-    "check": "node scripts/check-site.mjs",
+    "check": "node scripts/check-site.mjs && node scripts/sync-promo-trades.mjs --check",
+    "generate:trades": "node scripts/sync-promo-trades.mjs",
     "build:motion": "node scripts/vendor-three.mjs",
     "generate:news": "node scripts/generate-news.mjs"
   },

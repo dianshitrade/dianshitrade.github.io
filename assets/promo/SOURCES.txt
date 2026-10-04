@@ -62,10 +62,42 @@ These match the official site's landing_img/screens/01.png through 04.png.
 Optimized to WebP without changing screen content. Their balances/fees/rates
 are labelled as illustrative, not live quotes, verified payouts or promised earnings.
 Referral screen: owner-provided 1%交易奖励.png, optimized to referral-program.webp.
-Customer excerpts (10 words total): CardCosmic website, https://www.cardcosmic.com/,
-checked 2026-10-04. Brand-published, not independent verified reviews; no added stars.
+Customer excerpts originally sourced from CardCosmic's website on 2026-10-04;
+replaced with the owner-supplied App Store reviews in the 2026-10-05 update below.
 Apple, eBay and Google Play vector silhouettes: Simple Icons, CC0,
 https://github.com/simple-icons/simple-icons/tree/develop/icons .
 Original brand-themed artwork remains an illustration, not an issuer-provided card.
 Mobile hero: app-in-hand-mobile.webp is a 420 px responsive derivative of the
 existing owner-approved hero, preserving its content. Desktop keeps the full asset.
+
+2026-10-05 brand count and review update:
+Owner confirms the displayed platform total should be "23+". Keep the existing
+featured brand illustrations; the owner does not request two additional entries.
+The collection is a selection, not an exhaustive list of all supported brands.
+Remove the stats footnote and hero image caption at the owner's request. Preserve
+"combined downloads & registrations" (not unique users), platform attribution in
+the FAQ, first-trade reward eligibility and the separate trading-screen captions.
+Review screenshots supplied by the owner: DON-MARK 12 (Mar 1) and Ibrahimovicjnr
+(Jun 9), each rated 5 stars. Exact excerpts retained without correcting grammar.
+Both matched on 2026-10-05 to the App Store listing:
+https://apps.apple.com/us/app/cardcosmic/id6756063147
+The Google Play listing is provided as an additional review/download destination:
+https://play.google.com/store/apps/details?id=app.com.cardlaxy
+Neither supplied review is attributed to Google Play. Dates omit an unshown year.
+Review-source links do not emit AppDownloadClick; they are not download CTAs.
+
+2026-10-05 transaction replay:
+Owner-provided IMG_1082, IMG_1083, IMG_1084, IMG_1085, IMG_1086, IMG_1088,
+IMG_1089, IMG_1090 and IMG_1091 JPGs; 5 rows each. IMG_1091 duplicates IMG_1082.
+All 40 distinct supplied rows are retained in assets/promo/transactions.json.
+Masked names remain masked; long asterisk runs are shortened for display only.
+No source currency or absolute capture timestamp is supplied, so neither is
+invented. Numeric values are card denominations, not naira payout amounts.
+Relative times are retained only in the source data. The final page omits both
+the screenshot-replay notice and relative timestamps at the owner's request;
+it labels the collection "Selected completed trades", never "Live" or "Just Sold".
+This is not a live backend feed or independent verification of a completed trade.
+No fabricated recency, random customers or generated trades are added.
+Both pages contain the full static list, generated with npm run generate:trades.
+Motion pauses on hover, keyboard focus, touch, offscreen and in hidden tabs.
+Reduced-motion and no-JS visitors get a scrollable static list of all 40 rows.
