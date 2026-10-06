@@ -57,6 +57,12 @@
     });
   }
 
+  document.addEventListener("cardcosmic:conversion", event => {
+    const { name, properties = {} } = event.detail || {};
+    if (name === "RateEstimate") trackAction(name, { card_brand: properties.card_brand, card_region: properties.card_region });
+    if (name === "PayoutProofView") trackAction(name, { record: properties.record });
+  });
+
   function updatePrivacyStatus() {
     document.querySelector(".privacy-status").textContent = isLocalPreview
       ? "Analytics are disabled in this local mobile preview."

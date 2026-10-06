@@ -1,0 +1,12 @@
+{
+  "suppliedOn": "2026-10-06",
+  "expiresAt": "2026-10-07T00:00:00+01:00",
+  "basis": "NGN per 1 unit of card face currency; excludes bonuses and withdrawal fees",
+  "brands": [
+    {"id":"apple","name":"Apple / iTunes","rates":[{"region":"US","label":"United States","currency":"USD","rate":1213},{"region":"CA","label":"Canada","currency":"CAD","rate":793},{"region":"AU","label":"Australia","currency":"AUD","rate":798},{"region":"DE","label":"Germany","currency":"EUR","rate":1037},{"region":"UK","label":"United Kingdom","currency":"GBP","rate":1326},{"region":"MX","label":"Mexico","currency":"MXN","rate":61}]},
+    {"id":"steam","name":"Steam","rates":[{"region":"US","label":"United States","currency":"USD","rate":1128},{"region":"UK","label":"United Kingdom","currency":"GBP","rate":1418},{"region":"EU","label":"Euro area","currency":"EUR","rate":1224},{"region":"CA","label":"Canada","currency":"CAD","rate":746},{"region":"AU","label":"Australia","currency":"AUD","rate":741},{"region":"CH","label":"Switzerland","currency":"CHF","rate":1280}]},
+    {"id":"razergold","name":"Razer Gold","rates":[{"region":"US","label":"United States","currency":"USD","rate":1218},{"region":"CA","label":"Canada","currency":"CAD","rate":843},{"region":"AU","label":"Australia","currency":"AUD","rate":827},{"region":"MX","label":"Mexico","currency":"MXN","rate":68},{"region":"BR","label":"Brazil","currency":"BRL","rate":237},{"region":"MY","label":"Malaysia","currency":"MYR","rate":277}]},
+    {"id":"xbox","name":"Xbox","rates":[{"region":"US","label":"United States","currency":"USD","rate":1096},{"region":"UK","label":"United Kingdom","currency":"GBP","rate":1267},{"region":"EU","label":"Euro area","currency":"EUR","rate":1074},{"region":"CA","label":"Canada","currency":"CAD","rate":752},{"region":"AU","label":"Australia","currency":"AUD","rate":677},{"region":"CH","label":"Switzerland","currency":"CHF","rate":1118}]},
+    {"id":"ebay","name":"eBay","rates":[{"region":"US","label":"United States","currency":"USD","rate":816}]}
+  ]
+}

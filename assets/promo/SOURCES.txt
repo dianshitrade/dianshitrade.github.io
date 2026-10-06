@@ -134,3 +134,31 @@ transaction entries. In-app eligibility, crediting and withdrawal rules apply.
 Joining through this page uses 000000; inviting others uses the member's own
 personal code. The guide reuses the existing keyboard-accessible step controls,
 has no autoplay, respects reduced motion and shows all four steps without JS.
+
+2026-10-06 reference quote tool and withdrawal records:
+Owner supplied 25 rates for Apple/iTunes, Steam, Razer Gold, Xbox and eBay.
+Owner explicitly confirmed NGN per one unit of the selected card currency;
+US Apple 100 USD therefore estimates NGN 121,300, excluding bonuses and fees.
+assets/promo/rates.json is the source. Run npm run generate:rates after an
+owner-approved update, then npm run check. Update suppliedOn and expiresAt only
+with newly confirmed prices; never roll dates forward automatically. Current
+estimates expire at the end of 6 October in Nigeria (UTC+01:00). The dated
+reference table remains available without JS; it is not an executable quote.
+Card format, denomination eligibility and fees still require in-app confirmation.
+
+Six owner-supplied records: First Bank NGN 622,982; Access NGN 22,400;
+OPay NGN 101,800; PalmPay NGN 18,500; OPay NGN 90,000; PalmPay NGN 20,000.
+Owner confirmed that the five transfer records labelled Loan Repayment(s) are
+CardCosmic withdrawals. Original remarks, timestamps, banks, amounts and statuses
+are preserved; owner attribution is not independent verification of net credit.
+The five transfer screenshots label the value Amount debited, not Amount received.
+The First Bank app screen retains Aug 11 creation and Aug 18 completion, and
+must not be used as evidence for instant payout or a typical processing time.
+Only redacted PNGs and thumbnails are published in assets/promo/payouts/.
+Opaque RGB(34,36,43) rectangles remove names, accounts, order/reference IDs,
+session IDs and the private embedded receipt thumbnail. PNG output preserves
+every other decoded RGB pixel and strips metadata. Originals are not committed.
+Thumbnails are generated only from redacted PNGs. No AI rewriting was used.
+Quote checks and proof views use consent-gated custom events RateEstimate and
+PayoutProofView, never AppDownloadClick or CompleteRegistration. Only card brand,
+region or public record index are added; entered amounts and private IDs are not.
