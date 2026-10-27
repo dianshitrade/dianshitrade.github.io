@@ -60,7 +60,7 @@ test("both landing pages contain matching snapshots, six redacted records and no
     assert.ok(html.includes("is not included in this estimate"));
     assert.ok(html.includes("Not a live quote"));
     assert.ok(html.includes("Illustrative value"));
-    assert.ok(html.includes("assets/promo-conversion.js?v=20261028-reference"));
+    assert.ok(html.includes("assets/promo-conversion.js?v=20261028-reference-fresh"));
     assert.ok(!html.includes("6 Oct 2026"));
     assert.ok(!html.includes("codex-clipboard-"));
   }
