@@ -1,8 +1,5 @@
-export function quoteFor(snapshot, brandId, region, input, now = Date.now()) {
-  const expires = Date.parse(snapshot?.expiresAt);
-  if (!Number.isFinite(expires) || !Number.isFinite(now)) return { error: "unavailable" };
-  if (now >= expires) return { error: "expired" };
-  const brand = snapshot.brands?.find(item => item.id === brandId);
+export function quoteFor(snapshot, brandId, region, input) {
+  const brand = snapshot?.brands?.find(item => item.id === brandId);
   const rate = brand?.rates?.find(item => item.region === region);
   if (!rate || !Number.isFinite(rate.rate) || rate.rate <= 0) return { error: "unavailable" };
   const text = String(input).trim();
@@ -33,7 +30,6 @@ function initializeRates() {
   const equation = form.querySelector("[data-rate-equation]");
   const status = form.querySelector("[data-rate-status]");
   const number = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 });
-  const supplied = new Date(snapshot.suppliedOn + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
   snapshot.brands.forEach(item => brand.add(new Option(item.name, item.id)));
 
   function updateRegions() {
@@ -57,10 +53,9 @@ function initializeRates() {
     equation.textContent = quote.error ? {
       empty: "Enter your card's face value.",
       invalid: "Use a value from 0.01 to 1,000,000, with up to two decimal places.",
-      unavailable: "Check the current quote in the app.",
-      expired: "This rate snapshot has expired. Check the current quote in the app."
+      unavailable: "Check the current quote in the app."
     }[quote.error] : `${number.format(quote.amount)} ${quote.currency} \u00d7 \u20a6${number.format(quote.rate)} per ${quote.currency}`;
-    status.textContent = `Supplied ${supplied} \u00b7 ${quote.error === "expired" ? "Update required" : "Reference only"}`;
+    status.textContent = "Previously supplied rates \u00b7 Not a live quote";
     form.dataset.rateState = quote.error || "ready";
     return quote;
   }
@@ -71,16 +66,9 @@ function initializeRates() {
     event.preventDefault();
     if (!render().error) recordAction("RateEstimate", { card_brand: brand.value, card_region: region.value });
   });
-  // Clear an open estimate when its dated snapshot expires, even without another input.
-  const refreshOnExpiry = () => {
-    const remaining = Date.parse(snapshot.expiresAt) - Date.now();
-    if (remaining > 0) setTimeout(refreshOnExpiry, Math.min(remaining + 1, 2147483647));
-    else render();
-  };
   document.addEventListener("visibilitychange", () => { if (!document.hidden) render(); });
   updateRegions();
   render();
-  refreshOnExpiry();
   form.hidden = false;
 }
 

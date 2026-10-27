@@ -1,6 +1,5 @@
 {
   "suppliedOn": "2026-10-06",
-  "expiresAt": "2026-10-07T00:00:00+01:00",
   "basis": "NGN per 1 unit of card face currency; excludes bonuses and withdrawal fees",
   "brands": [
     {"id":"apple","name":"Apple / iTunes","rates":[{"region":"US","label":"United States","currency":"USD","rate":1213},{"region":"CA","label":"Canada","currency":"CAD","rate":793},{"region":"AU","label":"Australia","currency":"AUD","rate":798},{"region":"DE","label":"Germany","currency":"EUR","rate":1037},{"region":"UK","label":"United Kingdom","currency":"GBP","rate":1326},{"region":"MX","label":"Mexico","currency":"MXN","rate":61}]},

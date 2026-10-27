@@ -140,10 +140,11 @@ Owner supplied 25 rates for Apple/iTunes, Steam, Razer Gold, Xbox and eBay.
 Owner explicitly confirmed NGN per one unit of the selected card currency;
 US Apple 100 USD therefore estimates NGN 121,300, excluding bonuses and fees.
 assets/promo/rates.json is the source. Run npm run generate:rates after an
-owner-approved update, then npm run check. Update suppliedOn and expiresAt only
-with newly confirmed prices; never roll dates forward automatically. Current
-estimates expire at the end of 6 October in Nigeria (UTC+01:00). The dated
-reference table remains available without JS; it is not an executable quote.
+owner-approved update, then npm run check. Update suppliedOn only with newly
+confirmed prices; never roll the source date forward automatically. At the
+owner's request, these previously supplied rates remain usable for illustrative
+estimates without a timed expiry or a visible source date. They are not live
+quotes, and the reference table remains available without JS.
 Card format, denomination eligibility and fees still require in-app confirmation.
 
 Six owner-supplied records: First Bank NGN 622,982; Access NGN 22,400;

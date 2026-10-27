@@ -507,7 +507,6 @@ details a{text-decoration:underline;text-underline-offset:3px}
 .rate-result>p{grid-column:1;font-size:10px;color:var(--muted);min-height:18px;line-height:1.6}
 .rate-result>.button{grid-column:2;grid-row:2/4;min-height:42px;font-size:11px;padding:10px 14px;gap:8px}
 .rate-status{font-size:10px;color:var(--green);margin-top:12px}
-.rate-tool[data-rate-state="expired"] .rate-status{color:#854700}
 .rate-conditions{font-size:10px;color:var(--muted);line-height:1.7;margin-top:8px}
 .rate-reward{font-size:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);line-height:1.7}
 .rate-reward a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
