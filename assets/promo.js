@@ -23,8 +23,17 @@
     }
   }
 
+  // Tracking is on until the visitor declines. A stored "denied" choice is respected on later visits.
+  function trackingOn() {
+    return consent !== "denied";
+  }
+
   function initializePixel() {
-    if (pixelReady || consent !== "granted") return;
+    if (!trackingOn()) {
+      if (typeof window.fbq === "function") window.fbq("consent", "revoke");
+      return;
+    }
+    if (pixelReady) return;
     pixelReady = true;
     if (!window.fbq) {
       const fbq = window.fbq = function () {
@@ -49,7 +58,7 @@
 
   // Only browser actions are recorded here. Verified registration belongs to the app/backend.
   function trackAction(name, properties) {
-    if (consent !== "granted" || !pixelReady || typeof window.fbq !== "function") return;
+    if (!trackingOn() || !pixelReady || typeof window.fbq !== "function") return;
     window.fbq("trackSingleCustom", PIXEL_ID, name, {
       referral_code: INVITE_CODE,
       page_source: document.body.dataset.campaignSource,
@@ -68,8 +77,13 @@
       ? "Analytics are disabled in this local mobile preview."
       : privacySignal
       ? "Analytics are disabled because your browser requests not to be tracked."
-      : `Analytics: ${consent === "granted" ? "allowed" : "not allowed"}.`;
-    document.querySelectorAll('[data-consent="granted"]').forEach(button => { button.disabled = privacySignal || isLocalPreview; });
+      : consent === "denied"
+      ? "Analytics: turned off for this browser."
+      : "Analytics: on. This page uses Meta Pixel to measure visits. You can turn it off anytime.";
+    document.querySelectorAll('[data-consent="granted"]').forEach(button => {
+      button.disabled = privacySignal || isLocalPreview;
+      if (button.closest(".privacy-dialog")) button.textContent = consent === "denied" ? "Turn analytics on" : "Got it";
+    });
   }
 
   function setConsent(value) {
