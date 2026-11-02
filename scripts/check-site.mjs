@@ -141,6 +141,12 @@ if (!sitemap.includes("https://cardcosmic.top/social-growth.html")) {
   ["chime-service", "assets/promo-motion.js", "data-card-scene", 'id="reward-terms"', "&#8358;3,000"].forEach(needle => {
     if (!html.includes(needle)) failures.push(`${file}: missing reward/catalog requirement ${needle}`);
   });
+  for (const removed of ["only if you allow analytics", "Allow analytics", "A quick privacy choice"]) {
+    if (html.includes(removed)) failures.push(`${file}: outdated analytics opt-in copy ${removed}`);
+  }
+  for (const text of ["This page uses Meta Pixel to measure visits. You can turn it off anytime.", "Tracking starts when the page loads.", "No thanks", "Decline analytics", 'data-consent="denied"']) {
+    if (!html.includes(text)) failures.push(`${file}: missing opt-out analytics notice ${text}`);
+  }
 });
 
 if (failures.length) {
